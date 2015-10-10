@@ -14,7 +14,9 @@ class CreateKesalahanTable extends Migration
     {
         Schema::create('kesalahan', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->string('nama');
+            $table->integer('kategori_id', false, false);
+            $table->string('kod', 10);
         });
     }
 

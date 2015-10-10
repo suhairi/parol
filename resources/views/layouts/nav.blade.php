@@ -32,6 +32,23 @@
             <ul class="nav navbar-nav navbar-right">
                 {{--<li><a href="../navbar/">Default</a></li>--}}
                 {{--<li class="active"><a href="./">Static top <span class="sr-only">(current)</span></a></li>--}}
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        Setup <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ route('members.setup.cawangan') }}">Cawangan</a></li>
+                        <li><a href="{{ route('members.setup.warganegara') }}">Warganegara</a></li>
+                        <li><a href="{{ route('members.setup.jantina') }}">Jantina</a></li>
+                        <li><a href="{{ route('members.setup.bangsa') }}">Bangsa</a></li>
+                        <li><a href="{{ route('members.setup.kategori') }}">Kategori</a></li>
+                        <li><a href="{{ route('members.setup.kesalahan') }}">Kesalahan</a></li>
+                        <li><a href="{{ route('members.setup.pegawai') }}">Pegawai</a></li>
+                        {{--<li role="separator" class="divider"></li>--}}
+                        {{--<li class="dropdown-header">Nav header</li>--}}
+                        {{--<li><a href="#">Separated link</a></li>--}}
+                        {{--<li><a href="#">One more separated link</a></li>--}}
+                    </ul>
+                </li>
                 <li><a href="{{ route('logout') }}">Log Keluar</a></li>
             </ul>
         </div><!--/.nav-collapse -->

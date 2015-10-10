@@ -14,7 +14,7 @@ class CreateBangsaTable extends Migration
     {
         Schema::create('bangsa', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->string('nama');
         });
     }
 

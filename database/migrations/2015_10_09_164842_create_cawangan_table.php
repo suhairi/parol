@@ -14,7 +14,7 @@ class CreateCawanganTable extends Migration
     {
         Schema::create('cawangan', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->string('nama');
         });
     }
 

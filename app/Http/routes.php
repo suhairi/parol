@@ -35,6 +35,60 @@ Route::get('/logout', [
 
 Route::group(['prefix' => 'members'], function() {
 
+    // SETUP
+
+    Route::get('warganegara', [
+        'as'    => 'members.setup.warganegara',
+        'uses'  => 'Members\SetupController@warganegara'
+    ]);
+
+    Route::post('warganegara', [
+        'as'    => 'members.setup.warganegaraPost',
+        'uses'  => 'Members\SetupController@warganegaraPost'
+    ]);
+
+    Route::get('cawangan', [
+        'as'    => 'members.setup.cawangan',
+        'uses'  => 'Members\SetupController@cawangan'
+    ]);
+
+    Route::get('jantina', [
+        'as'    => 'members.setup.jantina',
+        'uses'  => 'Members\SetupController@jantina'
+    ]);
+
+    Route::get('bangsa', [
+        'as'    => 'members.setup.bangsa',
+        'uses'  => 'Members\SetupController@bangsa'
+    ]);
+
+    Route::get('kategori', [
+        'as'    => 'members.setup.kategori',
+        'uses'  => 'Members\SetupController@kategori'
+    ]);
+
+    Route::get('kesalahan', [
+        'as'    => 'members.setup.kesalahan',
+        'uses'  => 'Members\SetupController@kesalahan'
+    ]);
+
+    Route::get('pegawai', [
+        'as'    => 'members.setup.pegawai',
+        'uses'  => 'Members\SetupController@pegawai'
+    ]);
+
+
+
+
+
+
+
+
+
+
+
+
+    // CORE
     Route::get('/members', [
         'as'    => 'members.index',
         'uses'  => 'Members\MembersController@index'

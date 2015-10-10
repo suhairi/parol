@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateJantinaTable extends Migration
+class CreatePegawaiTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,10 @@ class CreateJantinaTable extends Migration
      */
     public function up()
     {
-        Schema::create('jantina', function (Blueprint $table) {
+        Schema::create('pegawai', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nama');
+            $table->string('pangkat');
         });
     }
 
@@ -25,6 +26,6 @@ class CreateJantinaTable extends Migration
      */
     public function down()
     {
-        Schema::drop('jantina');
+        Schema::drop('pegawai');
     }
 }
