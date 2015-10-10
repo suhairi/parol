@@ -44,12 +44,33 @@ class SetupController extends Controller
         return View('members.setup.cawangan', compact('bil', 'datas'));
     }
 
+    public function cawanganPost()
+    {
+        if(Cawangan::create(['nama' => strtoupper(Request::get('nama'))]))
+        {
+            Session::flash('success', 'Berjaya direkod.');
+            return Redirect::route('members.setup.cawangan');
+        }
+    }
+
     public function jantina()
     {
         $bil = 1;
         $datas = Jantina::all();
 
         return View('members.setup.jantina', compact('bil', 'datas'));
+    }
+
+    public function jantinaPost()
+    {
+        if(Jantina::create(['nama' => strtoupper(Request::get('nama'))]))
+        {
+            Session::flash('success', 'Berjaya direkod');
+            return Redirect::route('members.setup.jantina');
+        }
+
+        Session::flash('failed', 'Gagal direkod');
+        return Redirect::route('members.setup.jantina');
     }
 
     public function bangsa()
@@ -68,13 +89,39 @@ class SetupController extends Controller
         return View('members.setup.kategori', compact('bil', 'datas'));
     }
 
+    public function kategoriPost()
+    {
+        if(Kategori::create(['nama' => strtoupper(Request::get('nama'))]))
+        {
+            Session::flash('success', 'Berjaya direkod');
+            return Redirect::route('members.setup.kategori');
+        }
+
+        Session::flash('failed', 'Gagal direkod');
+        return Redirect::route('members.setup.kategori');
+    }
+
     public function kesalahan()
     {
         $bil = 1;
-        $datas = Kesalahan::all();
+        $datas = Kesalahan::orderBy('kategori_id', 'asc')->get();
         $datas2 = Kategori::all();
 
         return View('members.setup.kesalahan', compact('bil', 'datas', 'datas2'));
+    }
+
+    public function kesalahanPost()
+    {
+        if(Kesalahan::create(['nama' => strtoupper(Request::get('nama')), 'kategori_id' => Request::get('kategori_id'),
+            'kod' => strtoupper(Request::get('kod'))
+            ]))
+        {
+            Session::flash('success', 'Berjaya direkod');
+            return Redirect::route('members.setup.kesalahan');
+        }
+
+        Session::flash('failed', 'Gagal direkod');
+        return Redirect::route('members.setup.kesalahan');
     }
 
     public function pegawai()
@@ -83,5 +130,33 @@ class SetupController extends Controller
         $datas = Pegawai::all();
 
         return View('members.setup.pegawai', compact('bil', 'datas'));
+    }
+
+    public function pegawaiPost()
+    {
+        if(Pegawai::create(['nama' => strtoupper(Request::get('nama')), 'pangkat' => strtoupper(Request::get('pangkat'))]))
+        {
+            Session::flash('success', 'Berjaya direkod');
+            return Redirect::route('members.setup.pegawai');
+        }
+
+        Session::flash('failed', 'Gagal direkod');
+        return Redirect::route('members.setup.pegawai');
+    }
+
+    public function delete()
+    {
+        $table = 'App\\' . Request::get('table');
+
+        $data = $table::find(Request::get('id'));
+
+        if($data->delete())
+        {
+            Session::flash('success', 'Berjaya dipadam');
+            return Redirect::route('members.setup.' . strtolower(Request::get('table')));
+        }
+
+        Session::flash('failed', 'Gagal dipadam');
+        return Redirect::route('members.setup.' . strtolower(Request::get('table')));
     }
 }

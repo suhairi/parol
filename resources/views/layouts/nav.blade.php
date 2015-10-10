@@ -11,8 +11,8 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="{{ URL('/') }}">Home</a></li>
-                <li><a href="#contact">Rekod Maklumat</a></li>
+                <li><a href="{{ URL('/') }}">Home</a></li>
+                <li><a href="{{ route('members.rekod.index') }}">Rekod Maklumat</a></li>
                 <li><a href="{{ route('members.carian') }}">Carian</a></li>
 
                 <li class="dropdown">

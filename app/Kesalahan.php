@@ -14,6 +14,6 @@ class Kesalahan extends Model
 
     public function kategori()
     {
-        return $this->hasOne('App\Kategori');
+        return $this->hasOne('App\Kategori', 'id', 'kategori_id');
     }
 }

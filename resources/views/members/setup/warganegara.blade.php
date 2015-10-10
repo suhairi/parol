@@ -2,28 +2,30 @@
 
 @section('content')
 
-<div class="row">
-    <div class="col-xs-4">
+    @include('errors._notifications')
 
-        <div class="panel panel-primary">
-            <div class="panel-heading"><h4>Warganegara</h4></div>
-            <div class="panel-body">
+    <div class="row">
+        <div class="col-xs-4">
 
-                <form action="{{ route('members.setup.warganegaraPost') }}" method="post">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}" >
-                    <div class="form-group">
-                        <label for="warganegara">Warganegara</label>
-                        <input class="form-control" type="text" name="nama" required />
-                    </div>
-                    <div align="right">
-                        <input class="btn btn-primary" type="submit" value="Daftar"/>
-                    </div>
-                </form>
+            <div class="panel panel-primary">
+                <div class="panel-heading"><h4>Warganegara</h4></div>
+                <div class="panel-body">
 
+                    <form action="{{ route('members.setup.warganegaraPost') }}" method="post">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}" >
+                        <div class="form-group">
+                            <label for="warganegara">Warganegara</label>
+                            <input class="form-control" type="text" name="nama" required />
+                        </div>
+                        <div align="right">
+                            <input class="btn btn-primary" type="submit" value="Daftar"/>
+                        </div>
+                    </form>
+
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 <div class="row">
     <div class="col-xs-8">
@@ -44,7 +46,11 @@
                             <tr>
                                 <td>{{ $bil++ }}</td>
                                 <td>{{ $data->nama }}</td>
-                                <td><button class="btn btn-danger">Hapus</button></td>
+                                <td>
+                                    <a href="{{ route('members.setup.delete', ['id' => $data->id, 'table' => 'Warganegara']) }}">
+                                        <button class="btn btn-danger">Hapus</button>
+                                    </a>
+                                </td>
                             </tr>
                         @empty
                             <tr>

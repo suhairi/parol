@@ -8,17 +8,21 @@
             <div class="panel panel-primary">
                 <div class="panel-heading"><h4>Pegawai</h4></div>
                 <div class="panel-body">
-                    <div class="form-group">
-                        <label for="warganegara">Nama</label>
-                        <input class="form-control" type="text" name="nama"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="warganegara">Pangkat</label>
-                        <input class="form-control" type="text" name="pangkat"/>
-                    </div>
-                    <div align="right">
-                        <input class="btn btn-primary" type="submit" value="Daftar"/>
-                    </div>
+
+                    <form action="{{ route('members.setup.pegawaiPost') }}" method="post">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
+                        <div class="form-group">
+                            <label for="warganegara">Nama</label>
+                            <input class="form-control" type="text" name="nama"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="warganegara">Pangkat</label>
+                            <input class="form-control" type="text" name="pangkat"/>
+                        </div>
+                        <div align="right">
+                            <input class="btn btn-primary" type="submit" value="Daftar"/>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -36,6 +40,8 @@
                             <th>Bil</th>
                             <th>Nama</th>
                             <th>Pangkat</th>
+                            <th>Pilihan</th>
+
                         </tr>
                         </thead>
                         <tbody>
@@ -44,6 +50,7 @@
                                 <td>{{ $bil++ }}</td>
                                 <td>{{ $data->nama }}</td>
                                 <td>{{ $data->pangkat }}</td>
+                                <td><button class="btn btn-danger">Hapus</button></td>
 
                             </tr>
                         @empty

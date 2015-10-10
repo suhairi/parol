@@ -38,54 +38,87 @@ Route::group(['prefix' => 'members'], function() {
     // SETUP
 
     Route::get('warganegara', [
-        'as'    => 'members.setup.warganegara',
-        'uses'  => 'Members\SetupController@warganegara'
+        'as' => 'members.setup.warganegara',
+        'uses' => 'Members\SetupController@warganegara'
     ]);
 
     Route::post('warganegara', [
-        'as'    => 'members.setup.warganegaraPost',
-        'uses'  => 'Members\SetupController@warganegaraPost'
+        'as' => 'members.setup.warganegaraPost',
+        'uses' => 'Members\SetupController@warganegaraPost'
     ]);
 
     Route::get('cawangan', [
-        'as'    => 'members.setup.cawangan',
-        'uses'  => 'Members\SetupController@cawangan'
+        'as' => 'members.setup.cawangan',
+        'uses' => 'Members\SetupController@cawangan'
+    ]);
+
+    Route::post('cawangan', [
+        'as' => 'members.setup.cawanganPost',
+        'uses' => 'Members\SetupController@cawanganPost'
     ]);
 
     Route::get('jantina', [
-        'as'    => 'members.setup.jantina',
-        'uses'  => 'Members\SetupController@jantina'
+        'as' => 'members.setup.jantina',
+        'uses' => 'Members\SetupController@jantina'
+    ]);
+
+    Route::post('jantina', [
+        'as'    => 'members.setup.jantinaPost',
+        'uses'  => 'Members\SetupController@jantinaPost'
     ]);
 
     Route::get('bangsa', [
-        'as'    => 'members.setup.bangsa',
-        'uses'  => 'Members\SetupController@bangsa'
+        'as' => 'members.setup.bangsa',
+        'uses' => 'Members\SetupController@bangsa'
     ]);
 
     Route::get('kategori', [
-        'as'    => 'members.setup.kategori',
-        'uses'  => 'Members\SetupController@kategori'
+        'as' => 'members.setup.kategori',
+        'uses' => 'Members\SetupController@kategori'
+    ]);
+
+    Route::post('kategori', [
+        'as'    => 'members.setup.kategoriPost',
+        'uses'  => 'Members\SetupController@kategoriPost'
     ]);
 
     Route::get('kesalahan', [
-        'as'    => 'members.setup.kesalahan',
-        'uses'  => 'Members\SetupController@kesalahan'
+        'as' => 'members.setup.kesalahan',
+        'uses' => 'Members\SetupController@kesalahan'
+    ]);
+
+    Route::post('kesalahan', [
+        'as' => 'members.setup.kesalahanPost',
+        'uses' => 'Members\SetupController@kesalahanPost'
     ]);
 
     Route::get('pegawai', [
-        'as'    => 'members.setup.pegawai',
-        'uses'  => 'Members\SetupController@pegawai'
+        'as' => 'members.setup.pegawai',
+        'uses' => 'Members\SetupController@pegawai'
+    ]);
+
+    Route::post('pegawai', [
+        'as'    => 'members.setup.pegawaiPost',
+        'uses'  => 'Members\SetupController@pegawaiPost'
+    ]);
+
+    Route::get('delete', [
+        'as'    => 'members.setup.delete',
+        'uses'  => 'Members\SetupController@delete'
     ]);
 
 
+    // Rekod
 
+    Route::get('index', [
+        'as'    => 'members.rekod.index',
+        'uses'  => 'Members\RekodController@index'
+    ]);
 
-
-
-
-
-
-
+    Route::post('index', [
+        'as'    => 'members.rekod.indexPost',
+        'uses'  => 'Members\RekodController@indexPost'
+    ]);
 
 
     // CORE
