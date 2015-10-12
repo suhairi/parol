@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Members;
 
 use App\Cawangan;
 use App\Details;
+use App\Kategori;
+use App\Kesalahan;
 use Carbon\Carbon;
 use Request;
 use App\Http\Controllers\Controller;
@@ -29,19 +31,34 @@ class RekodController extends Controller
                 array_push($statuses, ['cawangan' => $cawangan->nama, 'status' => 'DIREKOD']);
         }
 
-//        dd($statuses->toArray());
-
-//        echo '<pre>';
-//        print_r($statuses);
-//        echo '</pre>';
-
-//        exit;
-
         return View('members.rekod.index', compact('bil', 'cawangans', 'statuses'));
     }
 
     public function indexPost()
     {
-        return Request::all();
+        $bil = 1;
+        $index = 0;
+        $datas1 =  [];
+        $datas2 = [];
+
+        $tarikh = Request::get('tarikh');
+        $cawangan = Cawangan::find(Request::get('cawangan_id'))->nama;
+        $details = Details::where('tarikh', 'like', Request::get('tarikh') . '%')
+            ->where('cawangan_id', Request::get('cawangan_id'))
+            ->get();
+
+        $kategoris = Kategori::all();
+
+        foreach($kategoris as $kategori)
+        {
+            $count = Kesalahan::where('kategori_id', $kategori->id)
+                ->count();
+            array_push($datas1, ['index' => $index++, 'id' => $kategori->id, 'nama' => $kategori->nama, 'count' => $count]);
+        }
+
+        $kesalahans = Kesalahan::all();
+
+        return View('members.rekod.display.details',
+            compact('bil', 'details', 'tarikh', 'cawangan', 'datas1', 'kesalahans'));
     }
 }

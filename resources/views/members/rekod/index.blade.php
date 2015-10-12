@@ -19,7 +19,7 @@
                     </div>
                     <div class="form-group">
                         <label for="cawangan">Pejabat</label>
-                        <select class="form-control" name="cawangan">
+                        <select class="form-control" name="cawangan_id">
                             <option>Pejabat</option>
                             @foreach($cawangans as $cawangan)
                                 <option value="{{ $cawangan->id }}">{{ $cawangan->nama }}</option>

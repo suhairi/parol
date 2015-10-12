@@ -65,7 +65,11 @@
                                 <td>{{ $data->kategori->nama }}</td>
                                 <td>{{ $data->nama }}</td>
                                 <td>{{ $data->kod }}</td>
-                                <td><button class="btn btn-danger">Hapus</button></td>
+                                <td>
+                                    <a href="{{ route('members.setup.delete', ['id' => $data->id, 'table' => 'Kesalahan']) }}">
+                                        <button class="btn btn-danger">Hapus</button>
+                                    </a>
+                                </td>
 
                             </tr>
                         @empty

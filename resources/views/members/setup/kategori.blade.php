@@ -47,7 +47,8 @@
                             <tr>
                                 <td>{{ $bil++ }}</td>
                                 <td>{{ $data->nama }}</td>
-                                <td><a href="{{ route('members.setup.delete', ['id' => $data->id, 'table' => 'Kategori']) }}">
+                                <td>
+                                    <a href="{{ route('members.setup.delete', ['id' => $data->id, 'table' => 'Kategori']) }}">
                                         <button class="btn btn-danger">Hapus</button>
                                     </a>
                                 </td>
