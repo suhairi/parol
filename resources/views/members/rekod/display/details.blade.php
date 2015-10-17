@@ -4,17 +4,12 @@
 
     <div class="row">
         <div class="col-xs-12">
-            <div class="wan-spinner wan-spinner-2">
-                <a href="javascript:void(0)" class="minus">-</a>
-                <input type="text" value="1">
-                <a href="javascript:void(0)" class="plus">+</a>
-            </div>
 
             <div class="panel panel-primary">
                 <div class="panel-heading">Details</div>
 
                 <div class="panel-body">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered table-hover">
                         <tr>
                             <th width="125">Institusi </th>
                             <th width="5">:</th>
@@ -55,33 +50,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                        <form>
-                            <fieldset>
-
-                            @foreach($datas1 as $data1)
-                                <tr>
-                                    <td rowspan="{{ $data1['count'] }}">{{ $data1['nama'] }}</td>
-                                    @foreach($kesalahans as $kesalahan)
-                                        @if($kesalahan->kategori_id == $data1['id'])
-                                                    <td>{{ $kesalahan->nama }}</td>
-                                                    <td><input class="form-control input-small" type="number" min="0" max="1000" value="0"/></td>
-                                                    <td><input class="form-control input-small" type="number" min="0" max="1000" value="0"/></td>
-                                                    <td><input class="form-control input-small" type="number" min="0" max="1000" value="0"/></td>
-                                                    <td><input class="form-control input-small" type="number" min="0" max="1000" value="0"/></td>
-                                                    <td><input class="form-control input-small" type="number" min="0" max="1000" value="0"/></td>
-                                                    <td><input class="form-control input-small" type="number" min="0" max="1000" value="0"/></td>
-                                                    <td><input class="form-control input-small" type="number" min="0" max="1000" value="0"/></td>
-                                                    <td><input class="form-control input-small" type="number" min="0" max="1000" value="0"/></td>
-                                                    <td><input class="form-control input-small" type="number" min="0" max="1000" value="0"/></td>
-                                                    <td><input class="form-control input-small" type="number" min="0" max="1000" value="0"/></td>
-
-                                                    <td>100</td>
-                                                </tr>
-                                        @endif
-                                    @endforeach
-                                </tr>
-                            @endforeach
-                            </fieldset>
+                        <form method="post" action="{{ route('members.rekod.index.post') }}">
+                            {{ csrf_field() }}
+                            @include('forms._details')
+                            <tr>
+                                <td colspan="13" align="right"><button class="btn btn-primary">Kemaskini Rekod</button></td>
+                            </tr>
                         </form>
                         </tbody>
                     </table>

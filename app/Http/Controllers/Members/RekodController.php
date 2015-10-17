@@ -64,18 +64,12 @@ class RekodController extends Controller
             ->where('cawangan_id', Request::get('cawangan_id'))
             ->get();
 
-        $kategoris = Kategori::all();
-
-        foreach($kategoris as $kategori)
-        {
-            $count = Kesalahan::where('kategori_id', $kategori->id)
-                ->count();
-            array_push($datas1, ['index' => $index++, 'id' => $kategori->id, 'nama' => $kategori->nama, 'count' => $count]);
-        }
-
-        $kesalahans = Kesalahan::all();
-
         return View('members.rekod.display.details',
-            compact('bil', 'details', 'tarikh', 'cawangan', 'datas1', 'kesalahans'));
+            compact('bil', 'details', 'tarikh', 'cawangan'));
+    }
+
+    public function detailsPost()
+    {
+        dd(Request::all());
     }
 }
