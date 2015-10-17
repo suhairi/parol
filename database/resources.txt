@@ -1,0 +1,8 @@
+Plus Minus Button
+
+1. http://jsfiddle.net/laelitenetwork/puJ6G/
+2. http://bootsnipp.com/snippets/featured/buttons-minus-and-plus-in-input
+3.
+4. http://www.jqueryscript.net/form/User-Friendly-Number-Input-Spinner-with-jQuery-Bootstrap.html
+5. http://www.jqueryscript.net/form/Minimal-Number-Picker-Plugin-For-jQuery-Wan-Spinner.html
+6.
