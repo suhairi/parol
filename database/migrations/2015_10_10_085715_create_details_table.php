@@ -13,9 +13,10 @@ class CreateDetailsTable extends Migration
     public function up()
     {
         Schema::create('details', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->date('tarikh');
             $table->integer('cawangan_id', false, false);
-            $table->primary(['tarikh', 'cawangan_id']);
+            $table->integer('warganegara_id', false, false);
             $table->integer('kesalahan_id', false, false);
             $table->integer('jantina_id', false, false);
             $table->integer('bangsa_id', false, false);

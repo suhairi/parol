@@ -71,5 +71,7 @@ class RekodController extends Controller
     public function detailsPost()
     {
         dd(Request::all());
+
+
     }
 }

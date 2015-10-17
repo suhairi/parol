@@ -120,9 +120,9 @@ Route::group(['prefix' => 'members'], function() {
         'uses'  => 'Members\RekodController@indexPost'
     ]);
 
-    Route::get('rekod', [
+    Route::post('rekod', [
         'as'    => 'members.rekod.index.post',
-        'uses'  => 'Members/RekodController@detailsPost'
+        'uses'  => 'Members\RekodController@detailsPost'
     ]);
 
 

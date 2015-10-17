@@ -52,6 +52,8 @@
                         <tbody>
                         <form method="post" action="{{ route('members.rekod.index.post') }}">
                             {{ csrf_field() }}
+                            <input type="hidden" name="tarikh" value="{{ $tarikh }}">
+                            <input type="hidden" name="cawangan" value="{{ $cawangan }}">
                             @include('forms._details')
                             <tr>
                                 <td colspan="13" align="right"><button class="btn btn-primary">Kemaskini Rekod</button></td>
