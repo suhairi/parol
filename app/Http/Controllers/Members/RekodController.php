@@ -7,8 +7,11 @@ use App\Details;
 use App\Kategori;
 use App\Kesalahan;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 use Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Redirect;
 
 class RekodController extends Controller
 {
@@ -36,6 +39,20 @@ class RekodController extends Controller
 
     public function indexPost()
     {
+        // Validation
+        $validation = Validator::make(Request::all(),[
+            'tarikh'        => 'required',
+            'cawangan_id'   => 'required|numeric'
+        ]);
+
+        if($validation->fails())
+        {
+            Session::flash('error', 'Sila pilih pejabat.');
+            return Redirect::back();
+        }
+
+        // next request
+
         $bil = 1;
         $index = 0;
         $datas1 =  [];

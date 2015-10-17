@@ -1,6 +1,6 @@
 @extends('layouts.members')
 
-@section('content');
+@section('content')
 
     @include('errors._notifications')
 
@@ -12,21 +12,21 @@
                 <div class="panel-body">
 
                 <form method="post" action="{{ route('members.rekod.indexPost') }}">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    {{ csrf_field() }}
                     <div class="form-group">
                         <label for="tarikh">Tarikh</label>
                         <input class="form-control" type="date" name="tarikh" value="{{ date('Y-m-d') }}" readonly>
                     </div>
                     <div class="form-group">
                         <label for="cawangan">Pejabat</label>
-                        <select class="form-control" name="cawangan_id">
+                        <select class="form-control" name="cawangan_id" required="">
                             <option>Pejabat</option>
                             @foreach($cawangans as $cawangan)
                                 <option value="{{ $cawangan->id }}">{{ $cawangan->nama }}</option>
                             @endforeach
                         </select>
                     </div>
-                    
+
                     <div class="form-group" align="right">
                         <input class="btn btn-primary" type="submit" value="Seterusnya >>" />
                     </div>

@@ -1,39 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>jQuery Wan Spinner Plugin Demos</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Penjara - Sistem Maklumat Banduan</title>
-
-    <!-- Bootstrap -->
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/bootstrap-theme.min.css') }}" rel="stylesheet">
-
-    <link href="{{ asset('css/navbar-static-top.css') }}" rel="stylesheet">
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="../build/wan-spinner.css">
+    <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
+    <style>
+        body { background-color:#ECF0F1; font-family:'Roboto Condensed';}
+        .container { margin:150px auto; text-align:center; max-width:640px;}
+        h1 { margin-bottom:50px;}
+    </style>
 </head>
+
 <body>
-@include('layouts.nav')
 
-<div class="container" role="main">
-    <div class="row">
-        {{--@include('layouts.nav_side')--}}
-        {{--<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">--}}
-        @yield('content')
+<div class="container">
+    <h1>jQuery Wan Spinner Plugin Demos</h1>
+    <div class="wan-spinner wan-spinner-1">
+        <a href="javascript:void(0)" class="minus">-</a>
+        <input type="text" value="1">
+        <a href="javascript:void(0)" class="plus">+</a>
+    </div><br>
+
+    <br/>
+    <div class="wan-spinner wan-spinner-2">
+        <a href="javascript:void(0)" class="minus">-</a>
+        <input type="text" value="1">
+        <a href="javascript:void(0)" class="plus">+</a>
+    </div><br>
+    <br>
+    <div class="wan-spinner wan-spinner-3">
+        <a href="javascript:void(0)" class="minus">-</a>
+        <input type="text" value="1">
+        <a href="javascript:void(0)" class="plus">+</a>
     </div>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="../build/wan-spinner.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var options = {
+                maxValue: 10,
+                minValue: -5,
+                step: 0.131,
+                inputWidth: 100,
+                start: -2,
+                plusClick: function(val) {
+                    console.log(val);
+                },
+                minusClick: function(val) {
+                    console.log(val);
+                },
+                exceptionFun: function(val) {
+                    console.log("excep: " + val);
+                },
+                valueChanged: function(val) {
+                    console.log('change: ' + val);
+                }
+            }
+            $(".wan-spinner-1").WanSpinner(options);
+            $(".wan-spinner-2").WanSpinner().css("border-color", "#2C3E50");
+            $(".wan-spinner-3").WanSpinner({inputWidth: 100}).css("border-color", "#C0392B");
+        });
+    </script>
 </div>
-
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="{{ asset('js/bootstrap.min.js') }}"></script>
-
 </body>
+
 </html>

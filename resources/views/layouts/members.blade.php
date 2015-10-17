@@ -24,14 +24,11 @@
 @include('layouts.nav')
 
 <div class="container" role="main">
-    <div class="row">
-        {{--@include('layouts.nav_side')--}}
-        {{--<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">--}}
         @yield('content')
-    </div>
 </div>
 
 <script src="{{ asset('js/jquery.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+{{--<script src="{{ asset('js/wan-spinner.js') }}"></script>--}}
 </body>
 </html>
