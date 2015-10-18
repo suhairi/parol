@@ -86,8 +86,12 @@ class RekodController extends Controller
             for($bangsa=1; $bangsa<=4; $bangsa++)
             {
 
+                if($cawangan_id == 1)
+                    $count = 16;
+                else
+                    $count = 14;
                 // Kesalahan
-                for($kesalahan=1; $kesalahan<=15; $kesalahan++)
+                for($kesalahan=1; $kesalahan<=$count; $kesalahan++)
                 {
 
                     // Jantina
@@ -101,15 +105,13 @@ class RekodController extends Controller
                             'kesalahan_id'  => $kesalahan,
                             'jantina_id'    => $jantina,
                             'jumlah'        => Request::get($warga . '_' . $bangsa . '_' . $kesalahan . '_' . $jantina)
-//                            'created_at'    => Carbon::now(),
-//                            'updated_at'    => Carbon::now()
                         ]);
                     }
                 }
             }
         }
-//        dd(Request::all());
-        exit;
+
+        return Redirect::back();
 
     }
 }

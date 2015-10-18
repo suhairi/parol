@@ -27,7 +27,6 @@ Kesalahan
     B. Dagang       -> 12
     Dadah           -> 13
     B. Parol        -> 14
-
     Muda `          -> 15
     KEM             -> 16
 
