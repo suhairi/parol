@@ -7,14 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 class Details extends Model
 {
     protected $table = 'details';
-    protected $primaryKey = ['tarikh', 'cawangan_id'];
+    protected $primaryKey = 'id';
     protected $fillable = [
+        'tarikh',
+        'cawangan_id',
         'warganegara_id',
+        'bangsa_id',
         'kesalahan_id',
         'jantina_id',
-        'bangsa_id',
-
+        'jumlah'
     ];
+
+    protected $dates = ['tarikh'];
 
     public function cawangan()
     {

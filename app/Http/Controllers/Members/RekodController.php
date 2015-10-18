@@ -70,8 +70,46 @@ class RekodController extends Controller
 
     public function detailsPost()
     {
-        dd(Request::all());
+        $tarikh = Request::get('tarikh');
+        $cawangan = Request::get('cawangan');
 
+
+
+        $cawangan_id = Cawangan::where('nama', $cawangan)->first()->id;
+
+//        dd($cawangan_id);
+
+        // Warganegara
+        for($warga=1; $warga<=3; $warga++)
+        {
+            // Bangsa
+            for($bangsa=1; $bangsa<=4; $bangsa++)
+            {
+
+                // Kesalahan
+                for($kesalahan=1; $kesalahan<=15; $kesalahan++)
+                {
+
+                    // Jantina
+                    for($jantina=1; $jantina<=2; $jantina++)
+                    {
+                        Details::create([
+                            'tarikh'        => $tarikh,
+                            'cawangan_id'   => $cawangan_id,
+                            'warganegara_id'=> $warga,
+                            'bangsa_id'     => $bangsa,
+                            'kesalahan_id'  => $kesalahan,
+                            'jantina_id'    => $jantina,
+                            'jumlah'        => Request::get($warga . '_' . $bangsa . '_' . $kesalahan . '_' . $jantina)
+//                            'created_at'    => Carbon::now(),
+//                            'updated_at'    => Carbon::now()
+                        ]);
+                    }
+                }
+            }
+        }
+//        dd(Request::all());
+        exit;
 
     }
 }

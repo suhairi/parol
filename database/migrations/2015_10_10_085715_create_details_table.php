@@ -17,9 +17,10 @@ class CreateDetailsTable extends Migration
             $table->date('tarikh');
             $table->integer('cawangan_id', false, false);
             $table->integer('warganegara_id', false, false);
+            $table->integer('bangsa_id', false, false);
             $table->integer('kesalahan_id', false, false);
             $table->integer('jantina_id', false, false);
-            $table->integer('bangsa_id', false, false);
+            $table->integer('jumlah', false, false);
             $table->timestamps();
         });
     }

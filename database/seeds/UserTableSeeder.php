@@ -8,6 +8,7 @@ use Illuminate\Database\Seeder;
 use App\User;
 use App\Bangsa;
 use App\Jantina;
+use App\Cawangan;
 
 class UserTableSeeder extends Seeder
 {
@@ -25,10 +26,22 @@ class UserTableSeeder extends Seeder
         ]);
 
         User::create([
+            'name'      => 'Administrator',
+            'email'     => 'admin',
+            'password'  => \Hash::make('password')
+        ]);
+
+
+
+        User::create([
             'name'      => 'Suhairi Abdul Hamid',
             'email'     => 'suhairi81@gmail.com',
             'password'  => \Hash::make('suhairi')
         ]);
+
+        Cawangan::create(['nama' => 'ALOR SETAR']);
+        Cawangan::create(['nama' => 'POKOK SENA']);
+        Cawangan::create(['nama' => 'SUNGAI PETANI']);
 
         Warganegara::create(['nama' => 'WARGANEGARA']);
         Warganegara::create(['nama' => 'BUKAN WARGANEGARA']);
