@@ -60,20 +60,61 @@ class RekodController extends Controller
 
         $tarikh = Request::get('tarikh');
         $cawangan = Cawangan::find(Request::get('cawangan_id'))->nama;
+        $cawangan_id = Request::get('cawangan_id');
         $details = Details::where('tarikh', 'like', Request::get('tarikh') . '%')
             ->where('cawangan_id', Request::get('cawangan_id'))
             ->get();
 
+        if(!empty($details->toArray()))
+        {
+            $data = [];
+            // Warganegara
+            for($warga=1; $warga<=3; $warga++)
+            {
+                // Bangsa
+                for($bangsa=1; $bangsa<=4; $bangsa++)
+                {
+
+                    if($cawangan_id == 1)
+                        $count = 16;
+                    else
+                        $count = 14;
+                    // Kesalahan
+                    for($kesalahan=1; $kesalahan<=$count; $kesalahan++)
+                    {
+
+                        // Jantina
+                        for($jantina=1; $jantina<=2; $jantina++)
+                        {
+                            $details = Details::where('tarikh', 'like', Request::get('tarikh'))
+                                ->where('cawangan_id', Request::get('cawangan_id'))
+                                ->where('warganegara_id', $warga)
+                                ->where('bangsa_id', $bangsa)
+                                ->where('kesalahan_id', $kesalahan)
+                                ->where('jantina_id', $jantina)
+                                ->get();
+
+                            $details = $details->toArray();
+
+                            dd($details['jumlah']);
+
+                            array_push($data, [$warga . '_' . $bangsa .'_' . $kesalahan . '_' . $jantina => $details->jumlah]);
+
+                            dd($details);
+                        }
+                    }
+                }
+            }
+        }
+
         return View('members.rekod.display.details',
-            compact('bil', 'details', 'tarikh', 'cawangan'));
+            compact('bil', 'details', 'tarikh', 'cawangan', 'flag'));
     }
 
     public function detailsPost()
     {
         $tarikh = Request::get('tarikh');
         $cawangan = Request::get('cawangan');
-
-
 
         $cawangan_id = Cawangan::where('nama', $cawangan)->first()->id;
 
