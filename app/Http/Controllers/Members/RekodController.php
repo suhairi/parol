@@ -54,9 +54,6 @@ class RekodController extends Controller
         // next request
 
         $bil = 1;
-        $index = 0;
-        $datas1 =  [];
-        $datas2 = [];
 
         $tarikh = Request::get('tarikh');
         $cawangan = Cawangan::find(Request::get('cawangan_id'))->nama;
@@ -65,24 +62,25 @@ class RekodController extends Controller
             ->where('cawangan_id', Request::get('cawangan_id'))
             ->get();
 
+        $data = [];
+
+        if($cawangan_id == 1)
+            $count = 16;
+        else
+            $count = 14;
+
         if(!empty($details->toArray()))
         {
-            $data = [];
+
             // Warganegara
             for($warga=1; $warga<=3; $warga++)
             {
                 // Bangsa
                 for($bangsa=1; $bangsa<=4; $bangsa++)
                 {
-
-                    if($cawangan_id == 1)
-                        $count = 16;
-                    else
-                        $count = 14;
                     // Kesalahan
                     for($kesalahan=1; $kesalahan<=$count; $kesalahan++)
                     {
-
                         // Jantina
                         for($jantina=1; $jantina<=2; $jantina++)
                         {
@@ -92,20 +90,17 @@ class RekodController extends Controller
                                 ->where('bangsa_id', $bangsa)
                                 ->where('kesalahan_id', $kesalahan)
                                 ->where('jantina_id', $jantina)
-                                ->get();
-
-                            $details = $details->toArray();
-
-                            dd($details['jumlah']);
+                                ->first();
 
                             array_push($data, [$warga . '_' . $bangsa .'_' . $kesalahan . '_' . $jantina => $details->jumlah]);
 
-                            dd($details);
                         }
                     }
                 }
             }
         }
+
+//        dd($data);
 
         return View('members.rekod.display.details',
             compact('bil', 'details', 'tarikh', 'cawangan', 'flag'));
@@ -118,7 +113,14 @@ class RekodController extends Controller
 
         $cawangan_id = Cawangan::where('nama', $cawangan)->first()->id;
 
-//        dd($cawangan_id);
+        dd(Request::get('1_4_1_1'));
+
+        if($cawangan_id == 1)
+            $count = 16;
+        else
+            $count = 14;
+
+//        dd($count);
 
         // Warganegara
         for($warga=1; $warga<=3; $warga++)
@@ -126,15 +128,9 @@ class RekodController extends Controller
             // Bangsa
             for($bangsa=1; $bangsa<=4; $bangsa++)
             {
-
-                if($cawangan_id == 1)
-                    $count = 16;
-                else
-                    $count = 14;
                 // Kesalahan
                 for($kesalahan=1; $kesalahan<=$count; $kesalahan++)
                 {
-
                     // Jantina
                     for($jantina=1; $jantina<=2; $jantina++)
                     {

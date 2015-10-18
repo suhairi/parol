@@ -82,7 +82,7 @@ class UserTableSeeder extends Seeder
 //            KEM             -> 16
 
         Kesalahan::create(['nama' => 'BANDUAN AKHIR', 'kategori_id' => '1', 'kod' => 'BA']);
-        Kesalahan::create(['nama' => 'BANDUAN SEUMUR HAYAT', 'kategori_id' => '1', 'kod' => 'BSH']);
+        Kesalahan::create(['nama' => 'BANDUAN SEUMUR HAYAT', 'kategori_id' => '1', 'kod' => 'SH']);
         Kesalahan::create(['nama' => 'BANDUAN SEUMUR HIDUP', 'kategori_id' => '1', 'kod' => 'BSH']);
         Kesalahan::create(['nama' => 'TAHANAN LIMPAH SULTAN', 'kategori_id' => '1', 'kod' => 'TLS']);
         Kesalahan::create(['nama' => 'HUKUMAN LAMA', 'kategori_id' => '1', 'kod' => 'HL']);
@@ -91,7 +91,7 @@ class UserTableSeeder extends Seeder
         Kesalahan::create(['nama' => 'TAHANAN MAHKAMAH TINGGI', 'kategori_id' => '2', 'kod' => 'TMT']);
         Kesalahan::create(['nama' => 'TAHANAN MAHKAMAH SESYEN', 'kategori_id' => '2', 'kod' => 'TMS']);
         Kesalahan::create(['nama' => 'TAHANAN MAHKAMAH RENDAH', 'kategori_id' => '2', 'kod' => 'TMR']);
-        Kesalahan::create(['nama' => 'TAHANAN MAHKAMAH RAYUAN', 'kategori_id' => '2', 'kod' => 'TMR']);
+        Kesalahan::create(['nama' => 'TAHANAN MAHKAMAH RAYUAN', 'kategori_id' => '2', 'kod' => 'TMR']);  //  KIV
         Kesalahan::create(['nama' => 'TAHANAN MAHKAMAH RENDAH SESYEN', 'kategori_id' => '2', 'kod' => 'TMRS']);
         Kesalahan::create(['nama' => 'BANDUAN DAGANG', 'kategori_id' => '2', 'kod' => 'BD']);
 
