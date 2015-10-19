@@ -131,8 +131,6 @@ Route::group(['prefix' => 'members'], function() {
     ]);
 
 
-
-
     // CORE
     Route::get('/members', [
         'as'    => 'members.index',
