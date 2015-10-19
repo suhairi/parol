@@ -135,7 +135,7 @@ function addBAkhir()
 </script>
 <tr>
     <td>Tahanan Limpah Sultan</td>
-    <td><input class="form-control input-sm" type="number" name="1_1_4_1" min="0" max="1000" value="2" id="TLSultan_1" onkeyup="addTLSultan()" onchange="addTLSultan()" /></td>
+    <td><input class="form-control input-sm" type="number" name="1_1_4_1" min="0" max="1000" value="0" id="TLSultan_1" onkeyup="addTLSultan()" onchange="addTLSultan()" /></td>
     <td><input class="form-control input-sm" type="number" name="1_1_4_2" min="0" max="1000" value="0" id="TLSultan_2" onkeyup="addTLSultan()" onchange="addTLSultan()" /></td>
     <td><input class="form-control input-sm" type="number" name="1_2_4_1" min="0" max="1000" value="0" id="TLSultan_3" onkeyup="addTLSultan()" onchange="addTLSultan()" /></td>
     <td><input class="form-control input-sm" type="number" name="1_2_4_2" min="0" max="1000" value="0" id="TLSultan_4" onkeyup="addTLSultan()" onchange="addTLSultan()" /></td>

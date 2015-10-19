@@ -113,7 +113,7 @@ class RekodController extends Controller
 
         $cawangan_id = Cawangan::where('nama', $cawangan)->first()->id;
 
-        dd(Request::get('1_4_1_1'));
+//        dd(Request::get('1_4_1_1'));
 
         if($cawangan_id == 1)
             $count = 16;
@@ -121,32 +121,51 @@ class RekodController extends Controller
             $count = 14;
 
 //        dd($count);
-
-        // Warganegara
-        for($warga=1; $warga<=3; $warga++)
+        // Kesalahan
+        for($kesalahan=1; $kesalahan<=$count; $kesalahan++)
         {
-            // Bangsa
-            for($bangsa=1; $bangsa<=4; $bangsa++)
+
+            // Warganegara
+            for($warga=1; $warga<=3; $warga++)
             {
-                // Kesalahan
-                for($kesalahan=1; $kesalahan<=$count; $kesalahan++)
+                if($warga == 1)
                 {
-                    // Jantina
                     for($jantina=1; $jantina<=2; $jantina++)
                     {
-                        Details::create([
-                            'tarikh'        => $tarikh,
-                            'cawangan_id'   => $cawangan_id,
-                            'warganegara_id'=> $warga,
-                            'bangsa_id'     => $bangsa,
-                            'kesalahan_id'  => $kesalahan,
-                            'jantina_id'    => $jantina,
-                            'jumlah'        => Request::get($warga . '_' . $bangsa . '_' . $kesalahan . '_' . $jantina)
-                        ]);
+                        for($bangsa=1; $bangsa<=3; $bangsa++)
+                        {
+                            Details::create([
+                                'tarikh' => $tarikh,
+                                'cawangan_id' => $cawangan_id,
+                                'warganegara_id' => $warga,
+                                'bangsa_id' => $bangsa,
+                                'kesalahan_id' => $kesalahan,
+                                'jantina_id' => $jantina,
+                                'jumlah' => Request::get($warga . '_' . $bangsa . '_' . $kesalahan . '_' . $jantina)
+                            ]);
+                        }
                     }
-                }
-            }
-        }
+
+                } else {
+
+                    for($bangsa=4; $bangsa<=4; $bangsa++)
+                    {
+                        for($jantina=1; $jantina<=2; $jantina++) {
+                            Details::create([
+                                'tarikh' => $tarikh,
+                                'cawangan_id' => $cawangan_id,
+                                'warganegara_id' => $warga,
+                                'bangsa_id' => $bangsa,
+                                'kesalahan_id' => $kesalahan,
+                                'jantina_id' => $jantina,
+                                'jumlah' => Request::get($warga . '_' . $bangsa . '_' . $kesalahan . '_' . $jantina)
+                            ]);
+                        }
+                    }
+                } // end if else warga
+
+            } // end warga
+        } //end kesalahan
 
         return Redirect::back();
 
