@@ -195,6 +195,67 @@ class RekodController extends Controller
         } //end kesalahan
 
         return Redirect::back();
-
     }
+
+    public function detailsUpdate()
+    {
+        $tarikh = Request::get('tarikh');
+        $cawangan = Request::get('cawangan');
+
+        $cawangan_id = Cawangan::where('nama', $cawangan)->first()->id;
+
+        if($cawangan_id == 1)
+            $count = 16;
+        else
+            $count = 14;
+
+        // Kesalahan
+        for($kesalahan=1; $kesalahan<=$count; $kesalahan++)
+        {
+            // Warganegara
+            for($warga=1; $warga<=3; $warga++)
+            {
+                if($warga == 1)
+                {
+                    for($jantina=1; $jantina<=2; $jantina++)
+                    {
+                        for($bangsa=1; $bangsa<=3; $bangsa++)
+                        {
+                            $details = Details::where('tarikh', 'like', Request::get('tarikh') . '%')
+                                ->where('cawangan_id', $cawangan_id)
+                                ->where('warganegara_id', $warga)
+                                ->where('bangsa_id', $bangsa)
+                                ->where('kesalahan_id', $kesalahan)
+                                ->where('jantina_id', $jantina)
+                                ->update([
+                                    'jumlah' => Request::get($warga . '_' . $bangsa . '_' . $kesalahan . '_' . $jantina)
+                                ]);
+                        }
+                    }
+
+                } else {
+
+                    for($bangsa=4; $bangsa<=4; $bangsa++)
+                    {
+                        for($jantina=1; $jantina<=2; $jantina++) {
+
+                            $details = Details::where('tarikh', 'like', Request::get('tarikh') . '%')
+                                ->where('cawangan_id', $cawangan_id)
+                                ->where('warganegara_id', $warga)
+                                ->where('bangsa_id', $bangsa)
+                                ->where('kesalahan_id', $kesalahan)
+                                ->where('jantina_id', $jantina)
+                                ->update([
+                                    'jumlah' => Request::get($warga . '_' . $bangsa . '_' . $kesalahan . '_' . $jantina)
+                                ]);
+                        }
+                    }
+                } // end if else warga
+
+            } // end warga
+        } //end kesalahan
+
+        return Redirect::back();
+    }
+
 }

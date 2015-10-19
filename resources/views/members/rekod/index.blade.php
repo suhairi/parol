@@ -13,9 +13,10 @@
 
                 <form method="post" action="{{ route('members.rekod.indexPost') }}">
                     {{ csrf_field() }}
-                    <div class="form-group">
+
+                    <div class="form-group form-inline">
                         <label for="tarikh">Tarikh</label>
-                        <input class="form-control" type="date" name="tarikh" value="{{ date('Y-m-d') }}" readonly>
+                        <input class="form-control" type="date" name="tarikh" id="tarikh" value="{{ date('Y-m-d') }}">
                     </div>
                     <div class="form-group">
                         <label for="cawangan">Pejabat</label>

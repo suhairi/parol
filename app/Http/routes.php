@@ -125,6 +125,13 @@ Route::group(['prefix' => 'members'], function() {
         'uses'  => 'Members\RekodController@detailsPost'
     ]);
 
+    Route::post('rekod/update', [
+        'as'    => 'members.rekod.index.update',
+        'uses'  => 'Members\RekodController@detailsUpdate'
+    ]);
+
+
+
 
     // CORE
     Route::get('/members', [

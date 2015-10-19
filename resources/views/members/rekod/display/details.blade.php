@@ -50,7 +50,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                        <form method="post" action="{{ route('members.rekod.index.post') }}">
+                        @if(empty($datas))
+                            <form method="post" action="{{ route('members.rekod.index.post') }}">
+                        @else
+                            <form method="post" action="{{ route('members.rekod.index.update') }}">
+                        @endif
                             {{ csrf_field() }}
                             <input type="hidden" name="tarikh" value="{{ $tarikh }}">
                             <input type="hidden" name="cawangan" value="{{ $cawangan }}">
