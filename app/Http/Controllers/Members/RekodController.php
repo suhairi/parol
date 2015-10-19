@@ -62,7 +62,7 @@ class RekodController extends Controller
             ->where('cawangan_id', Request::get('cawangan_id'))
             ->get();
 
-        $data = [];
+        $datas = [];
 
         if($cawangan_id == 1)
             $count = 16;
@@ -71,39 +71,66 @@ class RekodController extends Controller
 
         if(!empty($details->toArray()))
         {
-
-            // Warganegara
-            for($warga=1; $warga<=3; $warga++)
+            // Kesalahan
+            for($kesalahan=1; $kesalahan<=$count; $kesalahan++)
             {
-                // Bangsa
-                for($bangsa=1; $bangsa<=4; $bangsa++)
+
+                // Warganegara
+                for($warga=1; $warga<=3; $warga++)
                 {
-                    // Kesalahan
-                    for($kesalahan=1; $kesalahan<=$count; $kesalahan++)
+                    if($warga == 1)
                     {
-                        // Jantina
                         for($jantina=1; $jantina<=2; $jantina++)
                         {
-                            $details = Details::where('tarikh', 'like', Request::get('tarikh'))
-                                ->where('cawangan_id', Request::get('cawangan_id'))
-                                ->where('warganegara_id', $warga)
-                                ->where('bangsa_id', $bangsa)
-                                ->where('kesalahan_id', $kesalahan)
-                                ->where('jantina_id', $jantina)
-                                ->first();
+                            for($bangsa=1; $bangsa<=3; $bangsa++)
+                            {
+                                $detail = Details::where('tarikh', 'like', Request::get('tarikh') . '%')
+                                    ->where('cawangan_id', $cawangan_id)
+                                    ->where('warganegara_id', $warga)
+                                    ->where('bangsa_id', $bangsa)
+                                    ->where('kesalahan_id', $kesalahan)
+                                    ->where('jantina_id', $jantina)
+                                    ->first();
 
-                            array_push($data, [$warga . '_' . $bangsa .'_' . $kesalahan . '_' . $jantina => $details->jumlah]);
-
+                                array_push($datas, [
+                                    $warga . '_' . $bangsa . '_' . $kesalahan . '_' . $jantina => $detail->jumlah
+                                ]);
+                            }
                         }
-                    }
-                }
-            }
+
+                    } else {
+
+                        for($bangsa=4; $bangsa<=4; $bangsa++)
+                        {
+                            for($jantina=1; $jantina<=2; $jantina++) {
+
+                                $detail = Details::where('tarikh', 'like', Request::get('tarikh') . '%')
+                                    ->where('cawangan_id', $cawangan_id)
+                                    ->where('warganegara_id', $warga)
+                                    ->where('bangsa_id', $bangsa)
+                                    ->where('kesalahan_id', $kesalahan)
+                                    ->where('jantina_id', $jantina)
+                                    ->first();
+
+                                array_push($datas, [
+                                    $warga . '_' . $bangsa . '_' . $kesalahan . '_' . $jantina => $detail->jumlah
+                                ]);
+                            }
+                        }
+                    } // end if else warga
+
+                } // end warga
+            } //end kesalahan
         }
 
-//        dd($data);
-
+//        if(!empty($details->toArray()))
+//        {
+//            for ($i = 0; $i <= 160; $i++)
+//                var_dump($datas[$i]);
+//        }
+//        exit;
         return View('members.rekod.display.details',
-            compact('bil', 'details', 'tarikh', 'cawangan', 'flag'));
+            compact('bil', 'details', 'tarikh', 'cawangan', 'flag', 'datas'));
     }
 
     public function detailsPost()
