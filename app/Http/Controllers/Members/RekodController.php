@@ -144,12 +144,6 @@ class RekodController extends Controller
             } //end kesalahan
         }
 
-//        if(!empty($details->toArray()))
-//        {
-//            for ($i = 0; $i <= 160; $i++)
-//                var_dump($datas[$i]);
-//        }
-//        exit;
         return View('members.rekod.display.details',
             compact('bil', 'details', 'tarikh', 'cawangan', 'flag', 'datas'));
     }
@@ -280,3 +274,5 @@ class RekodController extends Controller
     }
 
 }
+
+

@@ -27,7 +27,12 @@
     <![endif]-->
 </head>
 <body>
-@include('layouts.nav')
+
+@if(Auth::user()->name == 'admin')
+    @include('layouts.nav_admin')
+@else
+    @include('layouts.nav')
+@endif
 
 <div class="container" role="main">
         @yield('content')

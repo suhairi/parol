@@ -16,7 +16,7 @@ class UserTableSeeder2 extends Seeder
     {
         $cawangans = Cawangan::all();
 
-        for($day = 1; $day <= 19; $day++)
+        for($day = 15; $day <= 25; $day++)
         {
             if($day < 10)
                 $days = '0' . $day;

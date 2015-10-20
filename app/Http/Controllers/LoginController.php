@@ -33,6 +33,8 @@ class LoginController extends Controller
                 return Redirect::intended('/');
             }
         }
+
+        return Redirect::back();
     }
 
     public function logout()

@@ -13,9 +13,15 @@
 
 Route::get('/', function () {
     if(Auth::check())
-        return redirect()->route('members.index');
-    else
+    {
+//        return Auth::user()->name;
+        if(Auth::user()->name == 'admin')
+            return redirect()->route('admin.index');
+        else
+            return redirect()->route('members.index');
+    } else {
         return redirect()->route('login');
+    }
 });
 
 Route::get('/login', [
@@ -33,7 +39,31 @@ Route::get('/logout', [
     'uses'  => 'LoginController@logout'
 ]);
 
-Route::group(['prefix' => 'members'], function() {
+// ADMIN
+
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
+
+    Route::get('index', [
+        'as'    => 'admin.index',
+        'uses'  => 'Admin\RecordsController@index'
+    ]);
+
+    Route::get('ringkasan/ringkasan2', [
+        'as'    => 'admin.ringkasan2',
+        'uses'  => 'Admin\RecordsController@ringkasan2'
+    ]);
+
+    Route::get('ringkasan/ringkasan3', [
+        'as'    => 'admin.ringkasan3',
+        'uses'  => 'Admin\RecordsController@ringkasan3'
+    ]);
+
+
+
+
+});
+
+Route::group(['prefix' => 'members', 'middleware' => 'auth'], function() {
 
     // SETUP
 
