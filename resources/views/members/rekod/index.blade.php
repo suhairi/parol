@@ -39,42 +39,63 @@
         </div>
 
         <div class="col-xs-4">
-            &nbsp;
-        </div>
-
-        <div class="col-xs-4">
-
             <div class="panel panel-primary">
                 <div class="panel-heading"><h4>Status Maklumat Hari ini</h4></div>
                 <div class="panel-body">
                     <table class="table table-hover table-bordered">
                         <thead>
-                            <tr>
-                                <th>Bil</th>
-                                <th>Pejabat Penjara</th>
-                                <th>Status</th>
-                            </tr>
+                        <tr>
+                            <th>Bil</th>
+                            <th>Pejabat Penjara</th>
+                            <th>Status</th>
+                        </tr>
                         </thead>
                         <tbody>
-                            @foreach($statuses as $status)
+                        @foreach($statuses as $status)
 
-                                @if($status['status'] == 'DIREKOD')
-                                    <?php $class = " class = 'alert alert-success'"; ?>
-                                @else
-                                    <?php $class = " class = 'alert alert-danger'"; ?>
-                                @endif
+                            @if($status['status'] == 'TELAH DIREKOD')
+                                <?php $class = " class = 'alert alert-success'"; ?>
+                            @else
+                                <?php $class = " class = 'alert alert-danger'"; ?>
+                            @endif
 
-                                <tr {!! $class !!}>
-                                    <td>{{ $bil++ }}</td>
-                                    <td>{{ $status['cawangan'] }}</td>
-                                    <td>{{ $status['status'] }}</td>
-                                </tr>
-                            @endforeach
+                            <tr {!! $class !!}>
+                                <td>{{ $bil++ }}</td>
+                                <td>{{ $status['cawangan'] }}</td>
+                                <td>{{ $status['status'] }}</td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
+
+        <div class="col-xs-4">
+
+            <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+
+            <script>
+
+                $(function () {
+
+                    $(document).ready(function () {
+
+                        // Build the chart
+                        $('#container').highcharts(
+                            {!! json_encode($yourFirstChart) !!}
+                        );
+                    });
+                });
+            </script>
+
+
+
+
+
+        </div>
     </div>
+
+
 
 @stop

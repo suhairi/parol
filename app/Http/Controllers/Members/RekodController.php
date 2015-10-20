@@ -19,22 +19,43 @@ class RekodController extends Controller
     {
         $bil = 1;
         $statuses = [];
+        $data[1] = $data[2] = $data[3] = 0;
 
         $cawangans = Cawangan::all();
 
-        foreach($cawangans as $cawangan)
-        {
-            $details = Details::where('tarikh', 'like', Carbon::now()->format('Y-m-d') . '%')
+        foreach($cawangans as $cawangan) {
+            $details = Details::where('tarikh', 'like', Carbon::now()->yesterday()->format('Y-m-d') . '%')
                 ->where('cawangan_id', $cawangan->id)
                 ->get();
 
-            if($details->isEmpty())
+//            dd($details);
+
+            if ($details->isEmpty())
+            {
                 array_push($statuses, ['cawangan' => $cawangan->nama, 'status' => 'BELUM DIREKOD']);
-            else
-                array_push($statuses, ['cawangan' => $cawangan->nama, 'status' => 'DIREKOD']);
+            } else {
+                array_push($statuses, ['cawangan' => $cawangan->nama, 'status' => 'TELAH DIREKOD']);
+
+                $jumlah = 0;
+                foreach($details as $detail)
+                    $jumlah += $detail->jumlah;
+
+                $data[$cawangan->id] = $jumlah;
+            }
+
         }
 
-        return View('members.rekod.index', compact('bil', 'cawangans', 'statuses'));
+
+        $yourFirstChart["chart"] = array("type" => "bar");
+        $yourFirstChart["title"] = array("text" => "Jumlah Keseluruhan Hari ini");
+        $yourFirstChart["xAxis"] = array("categories" => ['Alor Setar', 'Pokok Sena', 'Sungai Petani']);
+        $yourFirstChart["yAxis"] = array("title" => array("text" => "Bilangan Banduan / Tahanan"));
+
+        $yourFirstChart["series"] = [
+            array("name" => "JUMLAH KESELURUHAN", "data" => [$data[1], $data[2], $data[3]])
+        ];
+
+        return View('members.rekod.index', compact('bil', 'cawangans', 'statuses', 'yourFirstChart'));
     }
 
     public function indexPost()
