@@ -58,6 +58,23 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
         'uses'  => 'Admin\RecordsController@ringkasan3'
     ]);
 
+    Route::get('ringkasan/ringkasan4', [
+        'as'    => 'admin.ringkasan4',
+        'uses'  => 'Admin\RecordsController@ringkasan4'
+    ]);
+
+    Route::get('ringkasan/ringkasan5', [
+        'as'    => 'admin.ringkasan5',
+        'uses'  => 'Admin\RecordsController@ringkasan5'
+    ]);
+
+    Route::get('ringkasan/ringkasan6', [
+        'as'    => 'admin.ringkasan6',
+        'uses'  => 'Admin\RecordsController@ringkasan6'
+    ]);
+
+
+
 
 
 

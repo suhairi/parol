@@ -9,23 +9,23 @@
 
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h4>ALOR SETAR / POKOK SENA / SUNGAI PETANI</h4>
+                    <h4>ALOR SETAR</h4>
                     <strong>Tarikh : </strong> {{ \Carbon\Carbon::now()->format('d-m-Y') }}<br />
                     <?php
-                      if(\Carbon\Carbon::now()->format('D') == 'Sun')
-                          $hari = 'Ahad';
-                      if(\Carbon\Carbon::now()->format('D') == 'Mon')
-                          $hari = 'Isnin';
-                      if(\Carbon\Carbon::now()->format('D') == 'Tue')
-                          $hari = 'Selasa';
-                      if(\Carbon\Carbon::now()->format('D') == 'Wed')
-                          $hari = 'Rabu';
-                      if(\Carbon\Carbon::now()->format('D') == 'Thu')
-                          $hari = 'Khamis';
-                      if(\Carbon\Carbon::now()->format('D') == 'Fri')
-                          $hari = 'Jumaat';
-                      if(\Carbon\Carbon::now()->format('D') == 'Sat')
-                          $hari = 'Sabtu';
+                    if(\Carbon\Carbon::now()->format('D') == 'Sun')
+                        $hari = 'Ahad';
+                    if(\Carbon\Carbon::now()->format('D') == 'Mon')
+                        $hari = 'Isnin';
+                    if(\Carbon\Carbon::now()->format('D') == 'Tue')
+                        $hari = 'Selasa';
+                    if(\Carbon\Carbon::now()->format('D') == 'Wed')
+                        $hari = 'Rabu';
+                    if(\Carbon\Carbon::now()->format('D') == 'Thu')
+                        $hari = 'Khamis';
+                    if(\Carbon\Carbon::now()->format('D') == 'Fri')
+                        $hari = 'Jumaat';
+                    if(\Carbon\Carbon::now()->format('D') == 'Sat')
+                        $hari = 'Sabtu';
                     ?>
                     <strong>Hari &nbsp;&nbsp;&nbsp;&nbsp;: </strong> {{ $hari  }}<br />
                 </div>
@@ -51,7 +51,7 @@
         </div>
 
 
-        <meta http-equiv="refresh" content="6; url={{ route('admin.ringkasan4') }} ">
+        <meta http-equiv="refresh" content="6; url={{ route('admin.ringkasan5') }} ">
 
 
 
