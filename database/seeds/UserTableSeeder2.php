@@ -16,7 +16,7 @@ class UserTableSeeder2 extends Seeder
     {
         $cawangans = Cawangan::all();
 
-        for($day = 15; $day <= 25; $day++)
+        for($day = 15; $day <= 20; $day++)
         {
             if($day < 10)
                 $days = '0' . $day;
@@ -51,7 +51,7 @@ class UserTableSeeder2 extends Seeder
                                         'bangsa_id' => $bangsa,
                                         'kesalahan_id' => $kesalahan,
                                         'jantina_id' => $jantina,
-                                        'jumlah' => rand(0, 123)
+                                        'jumlah' => rand(0, 30)
                                     ]);
                                 }
                             }
