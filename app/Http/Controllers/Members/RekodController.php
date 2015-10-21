@@ -24,7 +24,7 @@ class RekodController extends Controller
         $cawangans = Cawangan::all();
 
         foreach($cawangans as $cawangan) {
-            $details = Details::where('tarikh', 'like', Carbon::now()->yesterday()->format('Y-m-d') . '%')
+            $details = Details::where('tarikh', 'like', Carbon::now()->format('Y-m-d') . '%')
                 ->where('cawangan_id', $cawangan->id)
                 ->get();
 
