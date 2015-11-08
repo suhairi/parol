@@ -17,7 +17,7 @@
 
 
 
-@if($cawangan == 'ALOR SETAR')
+@if($cawangan == 'ALOR SETAR' || $cawangan == 'POKOK SENA')
 
     <!-- ###################################  PAROL  ######################################### -->
 

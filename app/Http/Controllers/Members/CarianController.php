@@ -48,11 +48,11 @@ class CarianController extends Controller
 
         $yourFirstChart["chart"] = array("type" => "bar");
         $yourFirstChart["title"] = array("text" => "Tarikh : " . Carbon::parse($tarikh)->format('d-m-Y'));
-        $yourFirstChart["xAxis"] = array("categories" => ['Alor Setar', 'Pokok Sena', 'Sungai Petani']);
+        $yourFirstChart["xAxis"] = array("categories" => ['Alor Setar', 'Pokok Sena', 'Sungai Petani', 'Parol']);
         $yourFirstChart["yAxis"] = array("title" => array("text" => "Bilangan Banduan / Tahanan"));
 
         $yourFirstChart["series"] = [
-            array("name" => "JUMLAH KESELURUHAN", "data" => [$data[1], $data[2], $data[3]])
+            array("name" => "JUMLAH KESELURUHAN", "data" => [$data[1], $data[2], $data[3], $data[4]])
         ];
 
         return View('members.carian.result', compact('bil', 'cawangans', 'statuses', 'yourFirstChart'));

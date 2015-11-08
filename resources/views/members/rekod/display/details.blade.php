@@ -27,7 +27,7 @@
                                 <th rowspan="3">Perkara</th>
                                 <th rowspan="3">Kategori Penghuni</th>
                                 <th colspan="6"><div align="center">Warganegara</div> </th>
-                                <th colspan="2" rowspan="2"><div align="center">Bukan Warganegara</div></th>
+                                <th colspan="2" rowspan="2"><div align="center">Warga Asing</div></th>
                                 <th colspan="2" rowspan="2"><div align="center">Lain-lain</div></th>
                                 <th rowspan="3"><div align="center">Jumlah</div></th>
                             </tr>
@@ -58,7 +58,7 @@
                             {{ csrf_field() }}
                             <input type="hidden" name="tarikh" value="{{ $tarikh }}">
                             <input type="hidden" name="cawangan" value="{{ $cawangan }}">
-                            @include('forms._details')
+                                @include('forms._details')
                             <tr>
                                 <td colspan="13" align="right"><button class="btn btn-primary">Kemaskini Rekod</button></td>
                             </tr>

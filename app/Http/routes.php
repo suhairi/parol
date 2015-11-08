@@ -74,11 +74,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     ]);
 
 
-
-
-
-
 });
+
+
+
 
 Route::group(['prefix' => 'members', 'middleware' => 'auth'], function() {
 

@@ -19,11 +19,12 @@ class RekodController extends Controller
     {
         $bil = 1;
         $statuses = [];
-        $data[1] = $data[2] = $data[3] = 0;
+        $data[1] = $data[2] = $data[3] = $data[4] = 0;
 
         $cawangans = Cawangan::all();
 
-        foreach($cawangans as $cawangan) {
+        foreach($cawangans as $cawangan)
+        {
             $details = Details::where('tarikh', 'like', Carbon::now()->format('Y-m-d') . '%')
                 ->where('cawangan_id', $cawangan->id)
                 ->get();
@@ -48,11 +49,11 @@ class RekodController extends Controller
 
         $yourFirstChart["chart"] = array("type" => "bar");
         $yourFirstChart["title"] = array("text" => "Jumlah Keseluruhan Hari ini");
-        $yourFirstChart["xAxis"] = array("categories" => ['Alor Setar', 'Pokok Sena', 'Sungai Petani']);
+        $yourFirstChart["xAxis"] = array("categories" => ['Alor Setar', 'Pokok Sena', 'Sungai Petani', 'Parol']);
         $yourFirstChart["yAxis"] = array("title" => array("text" => "Bilangan Banduan / Tahanan"));
 
         $yourFirstChart["series"] = [
-            array("name" => "JUMLAH KESELURUHAN", "data" => [$data[1], $data[2], $data[3]])
+            array("name" => "JUMLAH KESELURUHAN", "data" => [$data[1], $data[2], $data[3], $data[4]])
         ];
 
         return View('members.rekod.index', compact('bil', 'cawangans', 'statuses', 'yourFirstChart'));
@@ -85,7 +86,8 @@ class RekodController extends Controller
 
         $datas = [];
 
-        if($cawangan_id == 1)
+
+        if($cawangan_id == 1 || $cawangan_id == 2)
             $count = 16;
         else
             $count = 14;
@@ -95,7 +97,6 @@ class RekodController extends Controller
             // Kesalahan
             for($kesalahan=1; $kesalahan<=$count; $kesalahan++)
             {
-
                 // Warganegara
                 for($warga=1; $warga<=3; $warga++)
                 {
@@ -157,7 +158,7 @@ class RekodController extends Controller
 
 //        dd(Request::get('1_4_1_1'));
 
-        if($cawangan_id == 1)
+        if($cawangan_id == 1 || $cawangan_id == 2)
             $count = 16;
         else
             $count = 14;
@@ -219,7 +220,7 @@ class RekodController extends Controller
 
         $cawangan_id = Cawangan::where('nama', $cawangan)->first()->id;
 
-        if($cawangan_id == 1)
+        if($cawangan_id == 1 || $cawangan_id == 2)
             $count = 16;
         else
             $count = 14;
