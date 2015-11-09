@@ -4,12 +4,13 @@
 
     <div class="row">
 
+        <div class="col-xs-2">&nbsp;</div>
         {{-- SUNGAI PETANI --}}
         <div class="col-xs-8">
 
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h4>ALOR SETAR</h4>
+                    <h4>ALOR SETAR / POKOK SENA / SUNGAI PETANI</h4>
                     <strong>Tarikh : </strong> {{ \Carbon\Carbon::now()->format('d-m-Y') }}<br />
                     <?php
                     if(\Carbon\Carbon::now()->format('D') == 'Sun')

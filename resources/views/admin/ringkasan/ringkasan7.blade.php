@@ -5,12 +5,12 @@
     <div class="row">
 
         <div class="col-xs-2">&nbsp;</div>
-        {{-- POKOK SENA --}}
+        {{-- SUNGAI PETANI --}}
         <div class="col-xs-8">
 
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h4>POKOK SENA</h4>
+                    <h4>SUNGAI PETANI</h4>
                     <strong>Tarikh : </strong> {{ \Carbon\Carbon::now()->format('d-m-Y') }}<br />
                     <?php
                     if(\Carbon\Carbon::now()->format('D') == 'Sun')
@@ -52,7 +52,7 @@
         </div>
 
 
-        <meta http-equiv="refresh" content="6; url={{ route('admin.ringkasan7') }} ">
+        <meta http-equiv="refresh" content="6; url={{ route('admin.index') }} ">
 
 
 

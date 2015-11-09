@@ -25,6 +25,15 @@ class RecordsController extends Controller
 
         $data = $this->getData($tarikh);
 
+        return View('admin.ringkasan.ringkasan2', compact('data'));
+    }
+
+    public function ringkasan3()
+    {
+        $tarikh = Carbon::now()->format('Y-m-d');
+
+        $data = $this->getData($tarikh);
+
         $charts['chart']    = [
             'plotBackgroundColor' => null,
             'plotBorderWidth'     => null,
@@ -63,10 +72,10 @@ class RecordsController extends Controller
             ]
         ]];
 
-        return View('admin.ringkasan.ringkasan2', compact('data', 'charts'));
+        return View('admin.ringkasan.ringkasan3', compact('data', 'charts'));
     }
 
-    public function ringkasan3()
+    public function ringkasan4()
     {
         $tarikh = Carbon::now()->format('Y-m-d');
 
@@ -113,83 +122,15 @@ class RecordsController extends Controller
         ];
 
 
-        return View('admin.ringkasan.ringkasan3', compact('data', 'charts'));
-    }
-
-    public function ringkasan4()
-    {
-        $tarikh = Carbon::now()->format('Y-m-d');
-
-        // ALOR SETAR
-        $data = $this->getRingkasan4($tarikh, 1);
-
-//        dd($data);
-
-        $charts['chart'] = ['type' => 'bar'];
-        $charts['title'] = ['text' => 'Bilangan Banduan / Tahanan'];
-        $charts['xAxis'] = [
-            'categories' => ['Melayu', 'Cina', 'India', 'Bukan Warga', 'Lain-lain'],
-            'title'     => ['text' => null]
-        ];
-        $charts['yAxis'] = [
-            'min'   => 0,
-            'title' => [
-                'text'  => 'Bilangan',
-                'align' => 'high'
-            ],
-            'labels' => ['overflow' => 'justify']
-        ];
-        $charts['plotOptions'] = [
-            'bar' => ['dataLabels' => ['enabled' => true]]
-        ];
-        $charts['legend'] = [
-            'layout'        => 'horizontal',
-            'align'         => 'right',
-            'verticalAlign' => 'top',
-            'x'             => -70,
-            'y'             => 20,
-            'floating'      => true,
-            'borderWidth'   => 1,
-            'backgroundColor'=> '#FFFFFF',
-            'shadow'        => true
-        ];
-        $charts['credits'] = ['enabled' => false];
-        $charts['series'] = [
-            [
-                'name' => 'PEREMPUAN',
-                'data' => [
-                    (int)$data[1]['jumlah'],
-                    (int)$data[3]['jumlah'],
-                    (int)$data[5]['jumlah'],
-                    (int)$data[7]['jumlah'],
-                    (int)$data[9]['jumlah']
-                ]
-            ],
-            [
-                'name' => 'LELAKI',
-                'data' => [
-                    (int)$data[0]['jumlah'],
-                    (int)$data[2]['jumlah'],
-                    (int)$data[4]['jumlah'],
-                    (int)$data[6]['jumlah'],
-                    (int)$data[8]['jumlah']
-                ]
-            ]
-        ];
-
-//        dd($data[4]['jumlah']);
-
-
         return View('admin.ringkasan.ringkasan4', compact('data', 'charts'));
-
     }
 
     public function ringkasan5()
     {
         $tarikh = Carbon::now()->format('Y-m-d');
 
-        // POKOK SENA
-        $data = $this->getRingkasan4($tarikh, 2);
+        // ALOR SETAR
+        $data = $this->getRingkasan4($tarikh, 1);
 
 //        dd($data);
 
@@ -257,7 +198,7 @@ class RecordsController extends Controller
         $tarikh = Carbon::now()->format('Y-m-d');
 
         // POKOK SENA
-        $data = $this->getRingkasan4($tarikh, 3);
+        $data = $this->getRingkasan4($tarikh, 2);
 
 //        dd($data);
 
@@ -317,6 +258,74 @@ class RecordsController extends Controller
 
 
         return View('admin.ringkasan.ringkasan6', compact('data', 'charts'));
+
+    }
+
+    public function ringkasan7()
+    {
+        $tarikh = Carbon::now()->format('Y-m-d');
+
+        // POKOK SENA
+        $data = $this->getRingkasan4($tarikh, 3);
+
+//        dd($data);
+
+        $charts['chart'] = ['type' => 'bar'];
+        $charts['title'] = ['text' => 'Bilangan Banduan / Tahanan'];
+        $charts['xAxis'] = [
+            'categories' => ['Melayu', 'Cina', 'India', 'Bukan Warga', 'Lain-lain'],
+            'title'     => ['text' => null]
+        ];
+        $charts['yAxis'] = [
+            'min'   => 0,
+            'title' => [
+                'text'  => 'Bilangan',
+                'align' => 'high'
+            ],
+            'labels' => ['overflow' => 'justify']
+        ];
+        $charts['plotOptions'] = [
+            'bar' => ['dataLabels' => ['enabled' => true]]
+        ];
+        $charts['legend'] = [
+            'layout'        => 'horizontal',
+            'align'         => 'right',
+            'verticalAlign' => 'top',
+            'x'             => -70,
+            'y'             => 20,
+            'floating'      => true,
+            'borderWidth'   => 1,
+            'backgroundColor'=> '#FFFFFF',
+            'shadow'        => true
+        ];
+        $charts['credits'] = ['enabled' => false];
+        $charts['series'] = [
+            [
+                'name' => 'PEREMPUAN',
+                'data' => [
+                    (int)$data[1]['jumlah'],
+                    (int)$data[3]['jumlah'],
+                    (int)$data[5]['jumlah'],
+                    (int)$data[7]['jumlah'],
+                    (int)$data[9]['jumlah']
+                ]
+            ],
+            [
+                'name' => 'LELAKI',
+                'data' => [
+                    (int)$data[0]['jumlah'],
+                    (int)$data[2]['jumlah'],
+                    (int)$data[4]['jumlah'],
+                    (int)$data[6]['jumlah'],
+                    (int)$data[8]['jumlah']
+                ]
+            ]
+        ];
+
+//        dd($data[4]['jumlah']);
+
+
+        return View('admin.ringkasan.ringkasan7', compact('data', 'charts'));
 
     }
 

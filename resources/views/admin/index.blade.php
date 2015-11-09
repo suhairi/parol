@@ -4,86 +4,74 @@
 
     <div class="row">
 
-        {{-- ALOR SETAR--}}
-        <div class="col-xs-4">
+        <div class="col-xs-2">&nbsp;</div>
 
+        <div class="col-xs-8">
             <div class="panel panel-primary">
-                <div class="panel-heading"><h4>ALOR SETAR</h4></div>
+                <div class="panel-heading"><h1>Ringkasan</h1></div>
                 <div class="panel-body">
 
-                    <table class="table table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th colspan="3" bgcolor="#DDD">Muster Utama</th>
+                            </tr>
+                        </thead>
                         <tr>
-                            <td><strong>Keseluruhan</strong></td>
-                            <td align="right"><strong>{{ $data[0]['jumlah'] + $data[1]['jumlah'] }}</strong></td>
+                            <th>Bil</th>
+                            <th>Institusi</th>
+                            <th>Jumlah</th>
                         </tr>
                         <tr>
-                            <td><strong>Lelaki</strong></td>
-                            <td align="right">{{ $data[0]['jumlah'] }}</td>
+                            <td>1.</td>
+                            <td>Alor Setar</td>
+                            <td>1250</td>
                         </tr>
                         <tr>
-                            <td><strong>Perempuan</strong></td>
-                            <td align="right">{{ $data[1]['jumlah'] }}</td>
-                        </tr>
-                    </table>
-                    <div align="right"><button class="btn btn-default">Details</button></div>
-                </div>
-            </div>
-        </div>
-
-         {{-- POKOK SENA --}}
-        <div class="col-xs-4">
-
-            <div class="panel panel-primary">
-                <div class="panel-heading"><h4>POKOK SENA</h4></div>
-                <div class="panel-body">
-
-                    <table class="table table-responsive">
-                        <tr>
-                            <td><strong>Keseluruhan</strong></td>
-                            <td align="right"><strong>{{ $data[2]['jumlah'] + $data[3]['jumlah'] }}</strong></td>
+                            <td>2.</td>
+                            <td>Pokok Sena</td>
+                            <td>2107</td>
                         </tr>
                         <tr>
-                            <td><strong>Lelaki</strong></td>
-                            <td align="right">{{ $data[2]['jumlah'] }}</td>
+                            <td>3.</td>
+                            <td>Sungai Petani</td>
+                            <td>987</td>
                         </tr>
                         <tr>
-                            <td><strong>Perempuan</strong></td>
-                            <td align="right">{{ $data[3]['jumlah'] }}</td>
+                            <td>4.</td>
+                            <td>Parol</td>
+                            <td>34</td>
                         </tr>
                     </table>
-                    <div align="right"><button class="btn btn-default">Details</button></div>
-                </div>
-            </div>
-        </div>
-
-         {{-- SUNGAI PETANI --}}
-        <div class="col-xs-4">
-
-            <div class="panel panel-primary">
-                <div class="panel-heading"><h4>SUNGAI PETANI</h4></div>
-                <div class="panel-body">
-
-                    <table class="table table-responsive">
+                    <table class="table">
+                        <thead>
                         <tr>
-                            <td><strong>Keseluruhan</strong></td>
-                            <td align="right"><strong>{{ $data[4]['jumlah'] + $data[5]['jumlah'] }}</strong></td>
+                            <th colspan="3" bgcolor="#DDD">Muster Sampingan</th>
+                        </tr>
+                        </thead>
+                        <tr>
+                            <td>1.</td>
+                            <td>Dadah</td>
+                            <td>150</td>
                         </tr>
                         <tr>
-                            <td><strong>Lelaki</strong></td>
-                            <td align="right">{{ $data[4]['jumlah'] }}</td>
+                            <td>2.</td>
+                            <td>Parol</td>
+                            <td>545</td>
                         </tr>
                         <tr>
-                            <td><strong>Perempuan</strong></td>
-                            <td align="right">{{ $data[5]['jumlah'] }}</td>
+                            <td>3.</td>
+                            <td>POCA</td>
+                            <td>7</td>
                         </tr>
                     </table>
-                    <div align="right"><button class="btn btn-default">Details</button></div>
+
                 </div>
             </div>
         </div>
 
 
-        <meta http-equiv="refresh" content="6; url={{ route('admin.ringkasan2') }} ">
+        <meta http-equiv="refresh" content="60; url={{ route('admin.ringkasan2') }} ">
 
 
 
