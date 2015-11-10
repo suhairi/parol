@@ -67,6 +67,9 @@ class RekodController extends Controller
             'cawangan_id'   => 'required|numeric'
         ]);
 
+        if(Request::get('cawangan_id') == 4)
+            return Redirect::route('members.rekod.parol', ['tarikh' => Request::get('tarikh')]);
+
         if($validation->fails())
         {
             Session::flash('error', 'Sila pilih pejabat.');
@@ -147,6 +150,25 @@ class RekodController extends Controller
 
         return View('members.rekod.display.details',
             compact('bil', 'details', 'tarikh', 'cawangan', 'flag', 'datas'));
+    }
+
+    public function parol()
+    {
+        $tarikh = Request::get('tarikh');
+        $cawangan = Cawangan::find(4)->nama;
+        $flag = false;
+
+        $details = Details::where('cawangan_id', 4)
+            ->where('tarikh', 'like', Request::get('tarikh') . '%')
+            ->get();
+
+        $datas = [];
+
+        if(!($details->isEmpty()))
+        {
+            $flag = true;
+        }
+        return View('members.rekod.display.details_parol', compact('tarikh', 'cawangan', 'flag', 'datas'));
     }
 
     public function detailsPost()

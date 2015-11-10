@@ -173,6 +173,11 @@ Route::group(['prefix' => 'members', 'middleware' => 'auth'], function() {
         'uses'  => 'Members\RekodController@indexPost'
     ]);
 
+    Route::get('parol', [
+        'as'    => 'members.rekod.parol',
+        'uses'  => 'Members\RekodController@parol'
+    ]);
+
     Route::post('rekod', [
         'as'    => 'members.rekod.index.post',
         'uses'  => 'Members\RekodController@detailsPost'
