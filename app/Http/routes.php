@@ -178,6 +178,16 @@ Route::group(['prefix' => 'members', 'middleware' => 'auth'], function() {
         'uses'  => 'Members\RekodController@parol'
     ]);
 
+    Route::post('parol', [
+        'as'    => 'members.rekod.parol.post',
+        'uses'  => 'Members\RekodController@parolPost'
+    ]);
+
+    Route::post('parol/update', [
+        'as'    => 'members.rekod.parol.update',
+        'uses'  => 'Members\RekodController@parolUpdate'
+    ]);
+
     Route::post('rekod', [
         'as'    => 'members.rekod.index.post',
         'uses'  => 'Members\RekodController@detailsPost'

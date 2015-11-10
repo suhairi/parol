@@ -167,8 +167,56 @@ class RekodController extends Controller
         if(!($details->isEmpty()))
         {
             $flag = true;
+
+            for($kesalahan = 17; $kesalahan <= 23; $kesalahan++)
+            {
+                for($bangsa = 1; $bangsa <= 3; $bangsa++)
+                {
+                    for($jantina = 1; $jantina <= 2; $jantina++)
+                    {
+                        $detail = Details::where('tarikh', 'like', Request::get('tarikh') . '%')
+                            ->where('cawangan_id', 4)
+                            ->where('warganegara_id', 1)
+                            ->where('bangsa_id', $bangsa)
+                            ->where('kesalahan_id', $kesalahan)
+                            ->where('jantina_id', $jantina)
+                            ->first();
+
+                        array_push($datas, [
+                            '1_' . $bangsa . '_' . $kesalahan . '_' . $jantina => $detail->jumlah
+                        ]);
+                    }
+                }
+            }
         }
         return View('members.rekod.display.details_parol', compact('tarikh', 'cawangan', 'flag', 'datas'));
+    }
+
+    public function parolPost()
+    {
+//        dd(Request::all());
+
+        for($kesalahan = 17; $kesalahan <= 23; $kesalahan++)
+        {
+            for($bangsa = 1; $bangsa <= 3; $bangsa++)
+            {
+                for($jantina = 1; $jantina <= 2; $jantina++)
+                {
+                    Details::create([
+                        'tarikh' => Request::get('tarikh'),
+                        'cawangan_id' => 4,
+                        'warganegara_id' => 1,
+                        'bangsa_id' => $bangsa,
+                        'kesalahan_id' => $kesalahan,
+                        'jantina_id' => $jantina,
+                        'jumlah' => Request::get('1_' . $bangsa . '_' . $kesalahan . '_' . $jantina)
+                    ]);
+
+                }
+            }
+        }
+
+        return Redirect::route('members.rekod.index');
     }
 
     public function detailsPost()
