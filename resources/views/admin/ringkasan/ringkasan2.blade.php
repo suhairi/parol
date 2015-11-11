@@ -29,7 +29,6 @@
                             <td align="right">{{ $data[1]['jumlah'] }}</td>
                         </tr>
                     </table>
-                    <div align="right"><button class="btn btn-default">Details</button></div>
                 </div>
             </div>
         </div>
@@ -55,7 +54,6 @@
                             <td align="right">{{ $data[3]['jumlah'] }}</td>
                         </tr>
                     </table>
-                    <div align="right"><button class="btn btn-default">Details</button></div>
                 </div>
             </div>
         </div>
@@ -81,7 +79,6 @@
                             <td align="right">{{ $data[5]['jumlah'] }}</td>
                         </tr>
                     </table>
-                    <div align="right"><button class="btn btn-default">Details</button></div>
                 </div>
             </div>
         </div>
@@ -107,7 +104,6 @@
                             <td align="right">{{ $data[7]['jumlah'] }}</td>
                         </tr>
                     </table>
-                    <div align="right"><button class="btn btn-default">Details</button></div>
                 </div>
             </div>
         </div>

@@ -16,7 +16,78 @@ class RecordsController extends Controller
 
         $data = $this->getData($tarikh);
 
-        return View('admin.index', compact('data'));
+        $pokokSena_L = Details::where('tarikh', $tarikh)
+            ->where('cawangan_id', 2)
+            ->where('jantina_id', 1)
+            ->sum('jumlah');
+
+        $pokokSena_P = Details::where('tarikh', $tarikh)
+            ->where('cawangan_id', 2)
+            ->where('jantina_id', 2)
+            ->sum('jumlah');
+
+        $alorSetar_L = Details::where('tarikh', $tarikh)
+            ->where('cawangan_id', 1)
+            ->where('jantina_id', 1)
+            ->sum('jumlah');
+
+        $alorSetar_P = Details::where('tarikh', $tarikh)
+            ->where('cawangan_id', 1)
+            ->where('jantina_id', 2)
+            ->sum('jumlah');
+
+
+        $sungaiPetani_L = Details::where('tarikh', $tarikh)
+            ->where('cawangan_id', 3)
+            ->where('jantina_id', 1)
+            ->sum('jumlah');
+
+        $sungaiPetani_P = Details::where('tarikh', $tarikh)
+            ->where('cawangan_id', 3)
+            ->where('jantina_id', 2)
+            ->sum('jumlah');
+
+        $kem_L = Details::where('tarikh', $tarikh)
+            ->where('jantina_id', 1)
+            ->where('kesalahan_id', 22)
+            ->sum('jumlah');
+
+        $kem_P = Details::where('tarikh', $tarikh)
+            ->where('jantina_id', 2)
+            ->where('kesalahan_id', 22)
+            ->sum('jumlah');
+
+        $pkw_L = Details::where('tarikh', $tarikh)
+            ->where('jantina_id', 1)
+            ->where('kesalahan_id', 23)
+            ->sum('jumlah');
+
+        $pkw_P = Details::where('tarikh', $tarikh)
+            ->where('jantina_id', 2)
+            ->where('kesalahan_id', 23)
+            ->sum('jumlah');
+
+        $rp_L = Details::where('tarikh', $tarikh)
+            ->where('jantina_id', 1)
+            ->where('kesalahan_id', 21)
+            ->sum('jumlah');
+
+        $rp_P = Details::where('tarikh', $tarikh)
+            ->where('jantina_id', 2)
+            ->where('kesalahan_id', 21)
+            ->sum('jumlah');
+
+
+
+        return View('admin.index',
+            compact('data', 'pokokSena_L', 'pokokSena_P',
+                'alorSetar_L', 'alorSetar_P',
+                'sungaiPetani_L', 'sungaiPetani_P',
+                'kem_L', 'kem_P',
+                'pkw_L', 'pkw_P',
+                'rp_L', 'rp_P'
+            )
+        );
     }
 
     public function ringkasan2()
@@ -26,8 +97,7 @@ class RecordsController extends Controller
         $data = $this->getData($tarikh);
 
         $jumlah = 0;
-        for($i=0; $i<=7; $i++)
-        {
+        for ($i = 0; $i <= 7; $i++) {
             $jumlah += (int)$data[$i]['jumlah'];
         }
 
@@ -41,49 +111,48 @@ class RecordsController extends Controller
         $data = $this->getData($tarikh);
 
         $jumlah = 0;
-        for($i=0; $i<=7; $i++)
-        {
+        for ($i = 0; $i <= 7; $i++) {
             $jumlah += (int)$data[$i]['jumlah'];
         }
 
-        $charts['chart']    = [
+        $charts['chart'] = [
             'plotBackgroundColor' => null,
-            'plotBorderWidth'     => null,
-            'plotShadow'          => false,
-            'type'                => 'pie'
+            'plotBorderWidth' => null,
+            'plotShadow' => false,
+            'type' => 'pie'
         ];
-        $charts['title']        = ['text' => 'Bilangan Banduan / Tahanan'];
-        $charts['tooltip']      = ['pointFormat' => '{series.name}: <b>{point.y} </b>'];
-        $charts['credits']       = false;
-        $charts['plotOptions']  = [
+        $charts['title'] = ['text' => 'Bilangan Banduan / Tahanan'];
+        $charts['tooltip'] = ['pointFormat' => '{series.name}: <b>{point.y} </b>'];
+        $charts['credits'] = false;
+        $charts['plotOptions'] = [
             'pie' => [
-                    'allowPointSelect' => true,
-                    'cursor' => 'pointer',
-                    'dataLabels' => ['enabled' => true],
-                    'showInLegend' => false
+                'allowPointSelect' => true,
+                'cursor' => 'pointer',
+                'dataLabels' => ['enabled' => true],
+                'showInLegend' => false
             ],
         ];
         $charts['series'] = [[
-            'name'          => 'Bilangan',
-            'colorByPoint'  => true,
-            'data'          => [
+            'name' => 'Bilangan',
+            'colorByPoint' => true,
+            'data' => [
                 [
-                    'name'  => 'Alor Setar',
-                    'y'     => $data[0]['jumlah'] + $data[1]['jumlah'],
+                    'name' => 'Alor Setar',
+                    'y' => $data[0]['jumlah'] + $data[1]['jumlah'],
                     'sliced' => true,
                     'selected' => true
                 ],
                 [
-                    'name'  => 'Pokok Sena',
-                    'y'     => $data[2]['jumlah'] + $data[3]['jumlah']
+                    'name' => 'Pokok Sena',
+                    'y' => $data[2]['jumlah'] + $data[3]['jumlah']
                 ],
                 [
-                    'name'  => 'Sungai Petani',
-                    'y'     => $data[4]['jumlah'] + $data[5]['jumlah']
+                    'name' => 'Sungai Petani',
+                    'y' => $data[4]['jumlah'] + $data[5]['jumlah']
                 ],
                 [
-                    'name'  => 'Parol',
-                    'y'     => $data[6]['jumlah'] + $data[7]['jumlah']
+                    'name' => 'Parol',
+                    'y' => $data[6]['jumlah'] + $data[7]['jumlah']
                 ]
 
             ]
@@ -102,12 +171,12 @@ class RecordsController extends Controller
         $charts['title'] = ['text' => 'Bilangan Banduan / Tahanan'];
         $charts['xAxis'] = [
             'categories' => ['Alor Setar', 'Pokok Sena', 'Sungai Petani', 'Parol'],
-            'title'     => ['text' => null]
+            'title' => ['text' => null]
         ];
         $charts['yAxis'] = [
-            'min'   => 0,
+            'min' => 0,
             'title' => [
-                'text'  => 'Bilangan',
+                'text' => 'Bilangan',
                 'align' => 'high'
             ],
             'labels' => ['overflow' => 'justify']
@@ -116,15 +185,15 @@ class RecordsController extends Controller
             'bar' => ['dataLabels' => ['enabled' => true]]
         ];
         $charts['legend'] = [
-            'layout'        => 'horizontal',
-            'align'         => 'right',
+            'layout' => 'horizontal',
+            'align' => 'right',
             'verticalAlign' => 'top',
-            'x'             => -70,
-            'y'             => 30,
-            'floating'      => true,
-            'borderWidth'   => 1,
-            'backgroundColor'=> '#FFFFFF',
-            'shadow'        => true
+            'x' => -70,
+            'y' => 30,
+            'floating' => true,
+            'borderWidth' => 1,
+            'backgroundColor' => '#FFFFFF',
+            'shadow' => true
         ];
         $charts['credits'] = ['enabled' => false];
         $charts['series'] = [
@@ -155,12 +224,12 @@ class RecordsController extends Controller
         $charts['title'] = ['text' => 'Bilangan Banduan / Tahanan'];
         $charts['xAxis'] = [
             'categories' => ['Melayu', 'Cina', 'India', 'Bukan Warga', 'Lain-lain'],
-            'title'     => ['text' => null]
+            'title' => ['text' => null]
         ];
         $charts['yAxis'] = [
-            'min'   => 0,
+            'min' => 0,
             'title' => [
-                'text'  => 'Bilangan',
+                'text' => 'Bilangan',
                 'align' => 'high'
             ],
             'labels' => ['overflow' => 'justify']
@@ -169,15 +238,15 @@ class RecordsController extends Controller
             'bar' => ['dataLabels' => ['enabled' => true]]
         ];
         $charts['legend'] = [
-            'layout'        => 'horizontal',
-            'align'         => 'right',
+            'layout' => 'horizontal',
+            'align' => 'right',
             'verticalAlign' => 'top',
-            'x'             => -70,
-            'y'             => 20,
-            'floating'      => true,
-            'borderWidth'   => 1,
-            'backgroundColor'=> '#FFFFFF',
-            'shadow'        => true
+            'x' => -70,
+            'y' => 20,
+            'floating' => true,
+            'borderWidth' => 1,
+            'backgroundColor' => '#FFFFFF',
+            'shadow' => true
         ];
         $charts['credits'] = ['enabled' => false];
         $charts['series'] = [
@@ -223,12 +292,12 @@ class RecordsController extends Controller
         $charts['title'] = ['text' => 'Bilangan Banduan / Tahanan'];
         $charts['xAxis'] = [
             'categories' => ['Melayu', 'Cina', 'India', 'Bukan Warga', 'Lain-lain'],
-            'title'     => ['text' => null]
+            'title' => ['text' => null]
         ];
         $charts['yAxis'] = [
-            'min'   => 0,
+            'min' => 0,
             'title' => [
-                'text'  => 'Bilangan',
+                'text' => 'Bilangan',
                 'align' => 'high'
             ],
             'labels' => ['overflow' => 'justify']
@@ -237,15 +306,15 @@ class RecordsController extends Controller
             'bar' => ['dataLabels' => ['enabled' => true]]
         ];
         $charts['legend'] = [
-            'layout'        => 'horizontal',
-            'align'         => 'right',
+            'layout' => 'horizontal',
+            'align' => 'right',
             'verticalAlign' => 'top',
-            'x'             => -70,
-            'y'             => 20,
-            'floating'      => true,
-            'borderWidth'   => 1,
-            'backgroundColor'=> '#FFFFFF',
-            'shadow'        => true
+            'x' => -70,
+            'y' => 20,
+            'floating' => true,
+            'borderWidth' => 1,
+            'backgroundColor' => '#FFFFFF',
+            'shadow' => true
         ];
         $charts['credits'] = ['enabled' => false];
         $charts['series'] = [
@@ -291,12 +360,12 @@ class RecordsController extends Controller
         $charts['title'] = ['text' => 'Bilangan Banduan / Tahanan'];
         $charts['xAxis'] = [
             'categories' => ['Melayu', 'Cina', 'India', 'Bukan Warga', 'Lain-lain'],
-            'title'     => ['text' => null]
+            'title' => ['text' => null]
         ];
         $charts['yAxis'] = [
-            'min'   => 0,
+            'min' => 0,
             'title' => [
-                'text'  => 'Bilangan',
+                'text' => 'Bilangan',
                 'align' => 'high'
             ],
             'labels' => ['overflow' => 'justify']
@@ -305,15 +374,15 @@ class RecordsController extends Controller
             'bar' => ['dataLabels' => ['enabled' => true]]
         ];
         $charts['legend'] = [
-            'layout'        => 'horizontal',
-            'align'         => 'right',
+            'layout' => 'horizontal',
+            'align' => 'right',
             'verticalAlign' => 'top',
-            'x'             => -70,
-            'y'             => 20,
-            'floating'      => true,
-            'borderWidth'   => 1,
-            'backgroundColor'=> '#FFFFFF',
-            'shadow'        => true
+            'x' => -70,
+            'y' => 20,
+            'floating' => true,
+            'borderWidth' => 1,
+            'backgroundColor' => '#FFFFFF',
+            'shadow' => true
         ];
         $charts['credits'] = ['enabled' => false];
         $charts['series'] = [
@@ -359,12 +428,12 @@ class RecordsController extends Controller
         $charts['title'] = ['text' => 'Bilangan Banduan / Tahanan'];
         $charts['xAxis'] = [
             'categories' => ['Melayu', 'Cina', 'India'],
-            'title'     => ['text' => null]
+            'title' => ['text' => null]
         ];
         $charts['yAxis'] = [
-            'min'   => 0,
+            'min' => 0,
             'title' => [
-                'text'  => 'Bilangan',
+                'text' => 'Bilangan',
                 'align' => 'high'
             ],
             'labels' => ['overflow' => 'justify']
@@ -373,15 +442,15 @@ class RecordsController extends Controller
             'bar' => ['dataLabels' => ['enabled' => true]]
         ];
         $charts['legend'] = [
-            'layout'        => 'horizontal',
-            'align'         => 'right',
+            'layout' => 'horizontal',
+            'align' => 'right',
             'verticalAlign' => 'top',
-            'x'             => -70,
-            'y'             => 20,
-            'floating'      => true,
-            'borderWidth'   => 1,
-            'backgroundColor'=> '#FFFFFF',
-            'shadow'        => true
+            'x' => -70,
+            'y' => 20,
+            'floating' => true,
+            'borderWidth' => 1,
+            'backgroundColor' => '#FFFFFF',
+            'shadow' => true
         ];
         $charts['credits'] = ['enabled' => false];
         $charts['series'] = [
@@ -466,7 +535,6 @@ class RecordsController extends Controller
             ->where('jantina_id', 2)
             ->sum('jumlah');
         array_push($data, ['tarikh' => $tarikh, 'Cawangan' => 'PAROL', 'Jantina' => 'PEREMPUAN', 'jumlah' => $count]);
-
 
 
         return $data;
@@ -556,9 +624,7 @@ class RecordsController extends Controller
             ->where('jantina_id', 2)
             ->sum('jumlah');
         array_push($data, ['jumlah' => $count]);
-
-        return $data;
     }
 
-
 }
+       
