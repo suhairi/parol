@@ -4,6 +4,10 @@
 
     <div class="row">
 
+        {{ $jumlah }}
+
+    @if($jumlah != 0)
+
         {{-- ALOR SETAR--}}
         <div class="col-xs-3">
 
@@ -107,9 +111,12 @@
                 </div>
             </div>
         </div>
+    @else
+        <div class="col-xs-8 danger">Tiada Data.</div>
+    @endif
 
 
-        <meta http-equiv="refresh" content="6; url={{ route('admin.ringkasan3') }} ">
+    <meta http-equiv="refresh" content="6; url={{ route('admin.ringkasan3') }} ">
 
 
 

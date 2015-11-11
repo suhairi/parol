@@ -25,7 +25,13 @@ class RecordsController extends Controller
 
         $data = $this->getData($tarikh);
 
-        return View('admin.ringkasan.ringkasan2', compact('data'));
+        $jumlah = 0;
+        for($i=0; $i<=7; $i++)
+        {
+            $jumlah += (int)$data[$i]['jumlah'];
+        }
+
+        return View('admin.ringkasan.ringkasan2', compact('data', 'jumlah'));
     }
 
     public function ringkasan3()
@@ -33,6 +39,12 @@ class RecordsController extends Controller
         $tarikh = Carbon::now()->format('Y-m-d');
 
         $data = $this->getData($tarikh);
+
+        $jumlah = 0;
+        for($i=0; $i<=7; $i++)
+        {
+            $jumlah += (int)$data[$i]['jumlah'];
+        }
 
         $charts['chart']    = [
             'plotBackgroundColor' => null,
@@ -77,7 +89,7 @@ class RecordsController extends Controller
             ]
         ]];
 
-        return View('admin.ringkasan.ringkasan3', compact('data', 'charts'));
+        return View('admin.ringkasan.ringkasan3', compact('data', 'charts', 'jumlah'));
     }
 
     public function ringkasan4()

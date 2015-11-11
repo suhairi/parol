@@ -4,6 +4,7 @@
 
     <div class="row">
 
+    @if($jumlah != '0')
         <div class="col-xs-2">&nbsp;</div>
         <div class="col-xs-8">
             <div class="panel panel-primary">
@@ -49,9 +50,12 @@
             </script>
 
         </div>
+    @else
+        <div class="col-xs-8 danger">Tiada Data.</div>
+    @endif
 
 
-        <meta http-equiv="refresh" content="6; url={{ route('admin.ringkasan4') }} ">
+    <meta http-equiv="refresh" content="6; url={{ route('admin.ringkasan4') }} ">
 
 
 

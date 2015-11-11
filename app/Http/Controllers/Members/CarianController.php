@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Members;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 use Request;
 use App\Cawangan;
 use App\Details;
@@ -20,11 +21,12 @@ class CarianController extends Controller
         $tarikh = Request::get('tarikh');
         $bil = 1;
         $statuses = [];
-        $data[1] = $data[2] = $data[3] = 0;
+        $data[1] = $data[2] = $data[3] = $data[4] = 0;
 
         $cawangans = Cawangan::all();
 
-        foreach($cawangans as $cawangan) {
+        foreach($cawangans as $cawangan)
+        {
             $details = Details::where('tarikh', 'like', $tarikh . '%')
                 ->where('cawangan_id', $cawangan->id)
                 ->get();
@@ -34,6 +36,7 @@ class CarianController extends Controller
             if ($details->isEmpty())
             {
                 array_push($statuses, ['cawangan' => $cawangan->nama, 'status' => 'BELUM DIREKOD']);
+                Session::flash('error', 'Tiada data.');
             } else {
                 array_push($statuses, ['cawangan' => $cawangan->nama, 'status' => 'TELAH DIREKOD']);
 
@@ -43,7 +46,6 @@ class CarianController extends Controller
 
                 $data[$cawangan->id] = $jumlah;
             }
-
         }
 
         $yourFirstChart["chart"] = array("type" => "bar");

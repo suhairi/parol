@@ -4,8 +4,8 @@
 
     <div class="row">
 
+    @if(!empty($data))
         <div class="col-xs-2">&nbsp;</div>
-        {{-- SUNGAI PETANI --}}
         <div class="col-xs-8">
 
             <div class="panel panel-primary">
@@ -49,10 +49,13 @@
                     </script>
                 </div>
             </div>
-        </div>
+    </div>
+    @else
+        <div class="col-xs-8 danger">Tiada Data.</div>
+    @endif
 
 
-        <meta http-equiv="refresh" content="6; url={{ route('admin.ringkasan5') }} ">
+    <meta http-equiv="refresh" content="6; url={{ route('admin.ringkasan5') }} ">
 
 
 
