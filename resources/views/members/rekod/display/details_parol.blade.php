@@ -9,7 +9,7 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">Details</div>
 
-                Flag : {{ $flag }}
+                {{--Flag : {{ $flag }}--}}
                 {{--{{ dd($datas) }}--}}
                 <div class="panel-body">
 

@@ -71,7 +71,7 @@
         </div>
 
 
-        <meta http-equiv="refresh" content="60; url={{ route('admin.ringkasan2') }} ">
+        <meta http-equiv="refresh" content="6; url={{ route('admin.ringkasan2') }} ">
 
 
 

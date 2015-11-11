@@ -78,6 +78,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
         'uses'  => 'Admin\RecordsController@ringkasan7'
     ]);
 
+    Route::get('ringkasan/ringkasan8', [
+        'as'    => 'admin.ringkasan8',
+        'uses'  => 'Admin\RecordsController@ringkasan8'
+    ]);
+
+
+
 
 
 

@@ -68,7 +68,12 @@ class RecordsController extends Controller
                 [
                     'name'  => 'Sungai Petani',
                     'y'     => $data[4]['jumlah'] + $data[5]['jumlah']
+                ],
+                [
+                    'name'  => 'Parol',
+                    'y'     => $data[6]['jumlah'] + $data[7]['jumlah']
                 ]
+
             ]
         ]];
 
@@ -84,7 +89,7 @@ class RecordsController extends Controller
         $charts['chart'] = ['type' => 'bar'];
         $charts['title'] = ['text' => 'Bilangan Banduan / Tahanan'];
         $charts['xAxis'] = [
-            'categories' => ['Alor Setar', 'Pokok Sena', 'Sungai Petani'],
+            'categories' => ['Alor Setar', 'Pokok Sena', 'Sungai Petani', 'Parol'],
             'title'     => ['text' => null]
         ];
         $charts['yAxis'] = [
@@ -113,11 +118,11 @@ class RecordsController extends Controller
         $charts['series'] = [
             [
                 'name' => 'PEREMPUAN',
-                'data' => [(int)$data[1]['jumlah'], (int)$data[3]['jumlah'], (int)$data[5]['jumlah']]
+                'data' => [(int)$data[1]['jumlah'], (int)$data[3]['jumlah'], (int)$data[5]['jumlah'], (int)$data[6]['jumlah']]
             ],
             [
                 'name' => 'LELAKI',
-                'data' => [(int)$data[0]['jumlah'], (int)$data[2]['jumlah'], (int)$data[4]['jumlah']]
+                'data' => [(int)$data[0]['jumlah'], (int)$data[2]['jumlah'], (int)$data[4]['jumlah'], (int)$data[7]['jumlah']]
             ]
         ];
 
@@ -329,6 +334,70 @@ class RecordsController extends Controller
 
     }
 
+    public function ringkasan8()
+    {
+        $tarikh = Carbon::now()->format('Y-m-d');
+
+        // POKOK SENA
+        $data = $this->getRingkasan4($tarikh, 4);
+
+//        dd($data);
+
+        $charts['chart'] = ['type' => 'bar'];
+        $charts['title'] = ['text' => 'Bilangan Banduan / Tahanan'];
+        $charts['xAxis'] = [
+            'categories' => ['Melayu', 'Cina', 'India'],
+            'title'     => ['text' => null]
+        ];
+        $charts['yAxis'] = [
+            'min'   => 0,
+            'title' => [
+                'text'  => 'Bilangan',
+                'align' => 'high'
+            ],
+            'labels' => ['overflow' => 'justify']
+        ];
+        $charts['plotOptions'] = [
+            'bar' => ['dataLabels' => ['enabled' => true]]
+        ];
+        $charts['legend'] = [
+            'layout'        => 'horizontal',
+            'align'         => 'right',
+            'verticalAlign' => 'top',
+            'x'             => -70,
+            'y'             => 20,
+            'floating'      => true,
+            'borderWidth'   => 1,
+            'backgroundColor'=> '#FFFFFF',
+            'shadow'        => true
+        ];
+        $charts['credits'] = ['enabled' => false];
+        $charts['series'] = [
+            [
+                'name' => 'PEREMPUAN',
+                'data' => [
+                    (int)$data[1]['jumlah'],
+                    (int)$data[3]['jumlah'],
+                    (int)$data[5]['jumlah']
+                ]
+            ],
+            [
+                'name' => 'LELAKI',
+                'data' => [
+                    (int)$data[0]['jumlah'],
+                    (int)$data[2]['jumlah'],
+                    (int)$data[4]['jumlah']
+                ]
+            ]
+        ];
+
+//        dd($data[4]['jumlah']);
+
+
+        return View('admin.ringkasan.ringkasan8', compact('data', 'charts'));
+
+    }
+
     protected function getData($date)
     {
         $tarikh = $date;
@@ -372,6 +441,21 @@ class RecordsController extends Controller
             ->where('jantina_id', 2)
             ->sum('jumlah');
         array_push($data, ['tarikh' => $tarikh, 'Cawangan' => 'ALOR SETAR', 'Jantina' => 'PEREMPUAN', 'jumlah' => $count]);
+
+        // PAROL - Lelaki
+        $count = Details::where('tarikh', 'like', $tarikh . '%')
+            ->where('cawangan_id', 4)
+            ->where('jantina_id', 1)
+            ->sum('jumlah');
+        array_push($data, ['tarikh' => $tarikh, 'Cawangan' => 'PAROL', 'Jantina' => 'LELAKI', 'jumlah' => $count]);
+
+        $count = Details::where('tarikh', 'like', $tarikh . '%')
+            ->where('cawangan_id', 4)
+            ->where('jantina_id', 2)
+            ->sum('jumlah');
+        array_push($data, ['tarikh' => $tarikh, 'Cawangan' => 'PAROL', 'Jantina' => 'PEREMPUAN', 'jumlah' => $count]);
+
+
 
         return $data;
     }
