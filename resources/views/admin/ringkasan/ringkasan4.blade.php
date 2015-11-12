@@ -4,7 +4,7 @@
 
     <div class="row">
 
-    @if(!empty($data))
+    @if($jumlah != 0)
         <div class="col-xs-2">&nbsp;</div>
         <div class="col-xs-8">
 

@@ -4,8 +4,6 @@
 
     <div class="row">
 
-        {{ $jumlah }}
-
     @if($jumlah != 0)
 
         {{-- ALOR SETAR--}}

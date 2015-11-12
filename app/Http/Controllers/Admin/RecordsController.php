@@ -110,6 +110,7 @@ class RecordsController extends Controller
 
         $data = $this->getData($tarikh);
 
+
         $jumlah = 0;
         for ($i = 0; $i <= 7; $i++) {
             $jumlah += (int)$data[$i]['jumlah'];
@@ -167,6 +168,11 @@ class RecordsController extends Controller
 
         $data = $this->getData($tarikh);
 
+        $jumlah = 0;
+        for ($i = 0; $i <= 7; $i++) {
+            $jumlah += (int)$data[$i]['jumlah'];
+        }
+
         $charts['chart'] = ['type' => 'bar'];
         $charts['title'] = ['text' => 'Bilangan Banduan / Tahanan'];
         $charts['xAxis'] = [
@@ -208,7 +214,7 @@ class RecordsController extends Controller
         ];
 
 
-        return View('admin.ringkasan.ringkasan4', compact('data', 'charts'));
+        return View('admin.ringkasan.ringkasan4', compact('data', 'charts', 'jumlah'));
     }
 
     public function ringkasan5()
@@ -218,6 +224,11 @@ class RecordsController extends Controller
         // ALOR SETAR
         $data = $this->getRingkasan4($tarikh, 1);
 
+        $jumlah = 0;
+        for ($i = 0; $i <= 7; $i++) {
+            $jumlah += (int)$data[$i]['jumlah'];
+        }
+
 //        dd($data);
 
         $charts['chart'] = ['type' => 'bar'];
@@ -275,7 +286,7 @@ class RecordsController extends Controller
 //        dd($data[4]['jumlah']);
 
 
-        return View('admin.ringkasan.ringkasan5', compact('data', 'charts'));
+        return View('admin.ringkasan.ringkasan5', compact('data', 'charts', 'jumlah'));
 
     }
 
@@ -285,6 +296,10 @@ class RecordsController extends Controller
 
         // POKOK SENA
         $data = $this->getRingkasan4($tarikh, 2);
+        $jumlah = 0;
+        for ($i = 0; $i <= 7; $i++) {
+            $jumlah += (int)$data[$i]['jumlah'];
+        }
 
 //        dd($data);
 
@@ -343,7 +358,7 @@ class RecordsController extends Controller
 //        dd($data[4]['jumlah']);
 
 
-        return View('admin.ringkasan.ringkasan6', compact('data', 'charts'));
+        return View('admin.ringkasan.ringkasan6', compact('data', 'charts', 'jumlah'));
 
     }
 
@@ -353,6 +368,10 @@ class RecordsController extends Controller
 
         // POKOK SENA
         $data = $this->getRingkasan4($tarikh, 3);
+        $jumlah = 0;
+        for ($i = 0; $i <= 7; $i++) {
+            $jumlah += (int)$data[$i]['jumlah'];
+        }
 
 //        dd($data);
 
@@ -411,7 +430,7 @@ class RecordsController extends Controller
 //        dd($data[4]['jumlah']);
 
 
-        return View('admin.ringkasan.ringkasan7', compact('data', 'charts'));
+        return View('admin.ringkasan.ringkasan7', compact('data', 'charts', 'jumlah'));
 
     }
 
@@ -421,6 +440,10 @@ class RecordsController extends Controller
 
         // POKOK SENA
         $data = $this->getRingkasan4($tarikh, 4);
+        $jumlah = 0;
+        for ($i = 0; $i <= 7; $i++) {
+            $jumlah += (int)$data[$i]['jumlah'];
+        }
 
 //        dd($data);
 
@@ -475,7 +498,7 @@ class RecordsController extends Controller
 //        dd($data[4]['jumlah']);
 
 
-        return View('admin.ringkasan.ringkasan8', compact('data', 'charts'));
+        return View('admin.ringkasan.ringkasan8', compact('data', 'charts', 'jumlah'));
 
     }
 
