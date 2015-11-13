@@ -13,9 +13,15 @@
                 {{--{{ dd($datas) }}--}}
                 <div class="panel-body">
 
+
                     @if($flag == false)
                         <form method="post" action="{{ route('members.rekod.parol.post') }}">
                     @else
+                        <div align="right">
+                            <a href="{{ route('members.rekod.parol.cetak', ['cawangan' => $cawangan, 'tarikh' => $tarikh]) }}" target="_blank">
+                                <i class="glyphicon glyphicon-print"></i>
+                            </a>
+                        </div><br />
                         <form method="post" action="{{ route('members.rekod.parol.update') }}">
                     @endif
                     {{ csrf_field() }}

@@ -85,9 +85,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 
 
 
-
-
-
 });
 
 
@@ -204,6 +201,20 @@ Route::group(['prefix' => 'members', 'middleware' => 'auth'], function() {
         'as'    => 'members.rekod.index.update',
         'uses'  => 'Members\RekodController@detailsUpdate'
     ]);
+
+    Route::group(['prefix' => 'cetak'], function() {
+
+        Route::get('/{cawangan}/{tarikh}', [
+            'as'    => 'members.rekod.cetak',
+            'uses'  => 'Members\CetakController@index'
+        ]);
+
+        Route::get('/parol/{cawangan}/{tarikh}', [
+            'as'    => 'members.rekod.parol.cetak',
+            'uses'  => 'Members\CetakController@parol'
+        ]);
+
+    });
 
 
     // CORE

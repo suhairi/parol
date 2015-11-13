@@ -9,6 +9,7 @@
                 <div class="panel-heading">Details</div>
 
                 <div class="panel-body">
+                    <div align="right"><a href="{{ route('members.rekod.cetak', ['cawangan' => $cawangan, 'tarikh' => $tarikh]) }}" target="_blank"><i class="glyphicon glyphicon-print"></i></a></div><br />
                     <table class="table table-bordered table-hover">
                         <tr>
                             <th width="125">Institusi </th>
@@ -52,17 +53,17 @@
                         <tbody>
                         @if(empty($datas))
                             <form method="post" action="{{ route('members.rekod.index.post') }}">
-                        @else
-                            <form method="post" action="{{ route('members.rekod.index.update') }}">
-                        @endif
-                            {{ csrf_field() }}
-                            <input type="hidden" name="tarikh" value="{{ $tarikh }}">
-                            <input type="hidden" name="cawangan" value="{{ $cawangan }}">
-                                @include('forms._details')
-                            <tr>
-                                <td colspan="13" align="right"><button class="btn btn-primary">Kemaskini Rekod</button></td>
-                            </tr>
-                        </form>
+                                @else
+                                    <form method="post" action="{{ route('members.rekod.index.update') }}">
+                                        @endif
+                                        {{ csrf_field() }}
+                                        <input type="hidden" name="tarikh" value="{{ $tarikh }}">
+                                        <input type="hidden" name="cawangan" value="{{ $cawangan }}">
+                                        @include('forms._details')
+                                        <tr>
+                                            <td colspan="13" align="right"><button class="btn btn-primary">Kemaskini Rekod</button></td>
+                                        </tr>
+                                    </form>
                         </tbody>
                     </table>
                 </div>
@@ -70,7 +71,6 @@
 
         </div>
     </div>
-
 
 
 @stop
