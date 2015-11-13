@@ -647,6 +647,8 @@ class RecordsController extends Controller
             ->where('jantina_id', 2)
             ->sum('jumlah');
         array_push($data, ['jumlah' => $count]);
+
+        return $data;
     }
 
 }

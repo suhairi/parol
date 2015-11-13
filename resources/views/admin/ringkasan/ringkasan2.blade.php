@@ -110,7 +110,7 @@
     @endif
 
 
-    <meta http-equiv="refresh" content="6; url={{ route('admin.ringkasan3') }} ">
+    <meta http-equiv="refresh" content="10; url={{ route('admin.ringkasan3') }} ">
 
 
 

@@ -4,7 +4,7 @@
 
     <div class="row">
 
-    @if(!empty($data))
+    @if($jumlah != 0)
         <div class="col-xs-2">&nbsp;</div>
         <div class="col-xs-8">
 
@@ -55,7 +55,7 @@
     @endif
 
 
-    <meta http-equiv="refresh" content="6; url={{ route('admin.ringkasan7') }} ">
+    <meta http-equiv="refresh" content="10; url={{ route('admin.ringkasan7') }} ">
 
 
 

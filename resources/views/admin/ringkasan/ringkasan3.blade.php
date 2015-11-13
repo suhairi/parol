@@ -55,7 +55,7 @@
     @endif
 
 
-    <meta http-equiv="refresh" content="6; url={{ route('admin.ringkasan4') }} ">
+    <meta http-equiv="refresh" content="10; url={{ route('admin.ringkasan4') }} ">
 
 
 

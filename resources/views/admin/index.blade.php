@@ -100,7 +100,7 @@
         </div>
 
 
-        <meta http-equiv="refresh" content="6; url={{ route('admin.ringkasan2') }} ">
+        <meta http-equiv="refresh" content="10; url={{ route('admin.ringkasan2') }} ">
 
 
 

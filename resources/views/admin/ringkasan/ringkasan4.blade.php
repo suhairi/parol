@@ -10,7 +10,7 @@
 
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h4>ALOR SETAR / POKOK SENA / SUNGAI PETANI</h4>
+                    <h4>ALOR SETAR / POKOK SENA / SUNGAI PETANI / PAROL</h4>
                     <strong>Tarikh : </strong> {{ \Carbon\Carbon::now()->format('d-m-Y') }}<br />
                     <?php
                     if(\Carbon\Carbon::now()->format('D') == 'Sun')
@@ -55,7 +55,7 @@
     @endif
 
 
-    <meta http-equiv="refresh" content="6; url={{ route('admin.ringkasan5') }} ">
+    <meta http-equiv="refresh" content="10; url={{ route('admin.ringkasan5') }} ">
 
 
 
