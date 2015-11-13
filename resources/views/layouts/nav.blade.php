@@ -37,7 +37,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         Setup <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{ route('members.setup.cawangan') }}">Cawangan</a></li>
+                        <li><a href="{{ route('members.setup.cawangan') }}">Institusi</a></li>
                         <li><a href="{{ route('members.setup.warganegara') }}">Warganegara</a></li>
                         <li><a href="{{ route('members.setup.jantina') }}">Jantina</a></li>
                         <li><a href="{{ route('members.setup.bangsa') }}">Bangsa</a></li>
