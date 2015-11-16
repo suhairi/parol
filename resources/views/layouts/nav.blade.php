@@ -13,6 +13,7 @@
             <ul class="nav navbar-nav">
                 <li><a href="{{ URL('/') }}">Home</a></li>
                 <li><a href="{{ route('members.rekod.index') }}">Rekod Maklumat</a></li>
+                <li><a href="{{ route('members.rekod.kursus.index') }}">Rekod Kursus</a></li>
                 <li><a href="{{ route('members.carian') }}">Carian</a></li>
                 <li><a href="{{ route('admin.index') }}">Admin Slide</a></li>
 
@@ -24,6 +25,8 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         Setup <span class="caret"></span></a>
                     <ul class="dropdown-menu">
+                        <li><a href="{{ route('members.setup.pengguna') }}">Pengguna</a></li>
+                        <li><a href="{{ route('members.setup.lokasi') }}">Lokasi Kursus</a></li>
                         <li><a href="{{ route('members.setup.cawangan') }}">Institusi</a></li>
                         <li><a href="{{ route('members.setup.warganegara') }}">Warganegara</a></li>
                         <li><a href="{{ route('members.setup.jantina') }}">Jantina</a></li>

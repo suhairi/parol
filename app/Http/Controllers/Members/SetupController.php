@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Members;
 
+use App\Lokasi;
+use App\User;
 use App\Bangsa;
 use App\Cawangan;
 use App\Jantina;
@@ -12,10 +14,70 @@ use App\Pegawai;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 use Request;
 
 class SetupController extends Controller
 {
+    public function pengguna()
+    {
+        $users = User::all();
+
+        return View('members.setup.pengguna', compact('users'));
+    }
+
+    public function penggunaPost()
+    {
+
+        $validation = Validator::make(Request::all(), [
+            'name'      => 'required',
+            'email'     => 'required|email',
+            'password'  => 'required'
+        ]);
+
+        if($validation->fails())
+        {
+            Session::flash('error','Gagal. Sila isikan ruangan dengan betul');
+            return Redirect::route('members.setup.pengguna')
+                ->withInput()
+                ->withErrors($validation);
+        }
+
+        User::create([
+            'name'      => Request::get('name'),
+            'email'     => Request::get('email'),
+            'password'  => \Hash::make(Request::get('password'))
+        ]);
+
+        return Redirect::route('members.setup.pengguna');
+    }
+
+    public function lokasi()
+    {
+        $locations = Lokasi::all();
+
+        return View('members.setup.lokasi', compact('locations'));
+    }
+
+    public function lokasiPost()
+    {
+        $validation = Validator::make(Request::all(), [
+            'name'  => 'required'
+        ]);
+
+        if($validation->fails())
+        {
+            Session::flash('error', 'Gagal. Sila isikan ruangan yang disediakan');
+            return Redirect::back();
+        }
+
+        Lokasi::create([
+            'nama'  => strtoupper(Request::get('name'))
+        ]);
+
+        return Redirect::route('members.setup.lokasi');
+    }
+
     public function warganegara()
     {
         $bil = 1;

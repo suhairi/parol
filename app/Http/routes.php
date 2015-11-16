@@ -94,6 +94,28 @@ Route::group(['prefix' => 'members', 'middleware' => 'auth'], function() {
 
     // SETUP
 
+    Route::get('pengguna', [
+        'as'    => 'members.setup.pengguna',
+        'uses'  => 'Members\SetupController@pengguna'
+    ]);
+
+    Route::post('pengguna', [
+        'as'    => 'members.setup.pengguna',
+        'uses'  => 'Members\SetupController@penggunaPost'
+    ]);
+
+    Route::get('lokasi', [
+        'as'    => 'members.setup.lokasi',
+        'uses'  => 'Members\SetupController@lokasi'
+    ]);
+
+    Route::post('lokasi', [
+        'as'    => 'members.setup.lokasi',
+        'uses'  => 'Members\SetupController@lokasiPost'
+    ]);
+
+
+
     Route::get('warganegara', [
         'as' => 'members.setup.warganegara',
         'uses' => 'Members\SetupController@warganegara'
@@ -201,6 +223,22 @@ Route::group(['prefix' => 'members', 'middleware' => 'auth'], function() {
         'as'    => 'members.rekod.index.update',
         'uses'  => 'Members\RekodController@detailsUpdate'
     ]);
+
+    //  KURSUS
+
+    Route::get('kursus', [
+        'as'    => 'members.rekod.kursus.index',
+        'uses'  =>'Members\KursusController@index'
+    ]);
+
+    Route::post('kursus', [
+        'as'    => 'members.rekod.kursus.post',
+        'uses'  => 'Members\KursusController@kursusPost'
+    ]);
+
+
+
+    // CETAK
 
     Route::group(['prefix' => 'cetak'], function() {
 

@@ -35,6 +35,7 @@
 @endif
 
 <div class="container" role="main">
+        @include('errors._notifications')
         @yield('content')
 </div>
 
