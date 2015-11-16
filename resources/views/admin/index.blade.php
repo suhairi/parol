@@ -44,10 +44,19 @@
                         <td><div align="center">{{ $sungaiPetani_L }}</div></td>
                         <td><div align="center">{{ $sungaiPetani_P }}</div></td>
                     </tr>
+
+                    <tr>
+                        <td>3.</td>
+                        <td>PEJABAT PAROL</td>
+                        <td><div align="center">{{ $parol_L }}</div></td>
+                        <td><div align="center">{{ $parol_P }}</div></td>
+                    </tr>
+
+
                     <tr>
                         <th colspan="2"><div align="right">JUMLAH</div></th>
-                        <th><div align="center">{{ $pokokSena_L + $sungaiPetani_L + $alorSetar_L }}</div></th>
-                        <th><div align="center">{{ $pokokSena_P + $sungaiPetani_P + $alorSetar_P }}</div></th>
+                        <th><div align="center">{{ $pokokSena_L + $sungaiPetani_L + $alorSetar_L + $parol_L }}</div></th>
+                        <th><div align="center">{{ $pokokSena_P + $sungaiPetani_P + $alorSetar_P + $parol_P }}</div></th>
                     </tr>
                     </tbody>
                 </table>
@@ -66,15 +75,15 @@
                     <tbody>
                     <tr>
                         <td>1.</td>
-                        <td>ODS KSAH</td>
-                        <td><div align="center">{{ $kem_L }}</div></td>
-                        <td><div align="center">{{ $kem_P }}</div></td>
+                        <td>ODS PAROL</td>
+                        <td><div align="center">{{ $pokokSena_L + $sungaiPetani_L + $alorSetar_L + $parol_L }}</div></td>
+                        <td><div align="center">{{ $pokokSena_P + $sungaiPetani_P + $alorSetar_P + $parol_P }}</div></td>
                     </tr>
                     <tr>
                         <td>2.</td>
-                        <td>ODS PAROL</td>
-                        <td><div align="center"></div></td>
-                        <td><div align="center"></div></td>
+                        <td>ODS KSAH</td>
+                        <td><div align="center">{{ $kem_L }}</div></td>
+                        <td><div align="center">{{ $kem_P }}</div></td>
                     </tr>
                     <tr>
                         <td>3.</td>

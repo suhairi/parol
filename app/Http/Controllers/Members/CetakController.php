@@ -15,8 +15,8 @@ class CetakController extends Controller
         $cawangan_id = Cawangan::where('nama', $cawangan)->first();
         $cawangan_id = $cawangan_id->id;
 
-        if (Request::get('cawangan_id') == 4)
-            return Redirect::route('members.rekod.parol.cetak', ['tarikh' => Request::get('tarikh')]);
+        if ($cawangan_id == 4)
+            return Redirect::route('members.rekod.parol.cetak', ['tarikh' => $tarikh]);
 
         $details = Details::where('tarikh', 'like', $tarikh . '%')
             ->where('cawangan_id', $cawangan_id)

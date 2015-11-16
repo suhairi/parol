@@ -47,6 +47,18 @@ class RecordsController extends Controller
             ->where('jantina_id', 2)
             ->sum('jumlah');
 
+
+        $parol_L = Details::where('tarikh', $tarikh)
+            ->where('cawangan_id', 4)
+            ->where('jantina_id', 1)
+            ->sum('jumlah');
+
+        $parol_P = Details::where('tarikh', $tarikh)
+            ->where('cawangan_id', 4)
+            ->where('jantina_id', 2)
+            ->sum('jumlah');
+
+
         $kem_L = Details::where('tarikh', $tarikh)
             ->where('jantina_id', 1)
             ->where('kesalahan_id', 22)
@@ -83,6 +95,7 @@ class RecordsController extends Controller
             compact('data', 'pokokSena_L', 'pokokSena_P',
                 'alorSetar_L', 'alorSetar_P',
                 'sungaiPetani_L', 'sungaiPetani_P',
+                'parol_L', 'parol_P',
                 'kem_L', 'kem_P',
                 'pkw_L', 'pkw_P',
                 'rp_L', 'rp_P'
