@@ -47,19 +47,43 @@
                         });
 
                     </script>
+
                 </div>
             </div>
+            @include('admin.includes._controlButtons')
     </div>
     @else
         <div class="col-xs-8 danger">Tiada Data.</div>
     @endif
 
 
-    <meta http-equiv="refresh" content="10; url={{ route('admin.ringkasan5') }} ">
-
-
 
     </div>
+
+    <script>
+
+        $(document).ready(function() {
+
+            var timeout = setTimeout(function() {
+                // The refresh is occurring here
+                window.location.href = "{{ route('admin.ringkasan5') }}";
+            }, 10000);
+
+            $('#pause').click(function(e) {
+                clearTimeout(timeout);
+                $('#pause').hide();
+            });
+
+            $('#next').click(function() {
+                window.location = "{{ route('admin.ringkasan5') }}";
+            });
+
+            $('#previous').click(function() {
+                window.location = "{{ route('admin.ringkasan3') }}";
+            });
+        });
+
+    </script>
 
 
 @stop

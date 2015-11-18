@@ -110,11 +110,36 @@
     @endif
 
 
-    <meta http-equiv="refresh" content="10; url={{ route('admin.ringkasan3') }} ">
-
-
+    {{--<meta http-equiv="refresh" content="10; url={{ route('admin.ringkasan3') }} ">--}}
+    <br /><br /><br /><br /><br />
+    @include('admin.includes._controlButtons')
 
     </div>
 
+    <script>
+
+        $(document).ready(function() {
+
+            var timeout = setTimeout(function() {
+                // The refresh is occurring here
+                window.location.href = "{{ route('admin.ringkasan3') }}";
+            }, 10000);
+
+            $('#pause').click(function(e) {
+                clearTimeout(timeout);
+                $('#pause').hide();
+            });
+
+            $('#next').click(function() {
+                window.location = "{{ route('admin.ringkasan4') }}";
+            });
+
+            $('#previous').click(function() {
+                window.location = "{{ route('admin.index') }}";
+            });
+
+
+        });
+    </script>
 
 @stop

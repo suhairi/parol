@@ -106,10 +106,36 @@
                     </tbody>
                 </table>
             </div>
+
+            @include('admin.includes._controlButtons')
+
         </div>
 
+        <script>
 
-        <meta http-equiv="refresh" content="10; url={{ route('admin.ringkasan2') }} ">
+            $(document).ready(function() {
+
+                var timeout = setTimeout(function() {
+                    // The refresh is occurring here
+                    window.location.href = "{{ route('admin.ringkasan2') }}";
+                }, 10000);
+
+                $('#pause').click(function(e) {
+                    clearTimeout(timeout);
+                    $('#pause').hide();
+                });
+
+                $('#next').click(function() {
+                    window.location = "{{ route('admin.ringkasan2') }}";
+                });
+
+                $('#previous').click(function() {
+                    window.location = "{{ route('admin.ringkasan8') }}";
+                });
+
+
+            });
+        </script>
 
 
 
