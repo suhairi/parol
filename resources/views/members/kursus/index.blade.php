@@ -65,7 +65,7 @@
                         @foreach($courses as $course)
                             <tr>
                                 <td>{{ $course->nama }}</td>
-                                <td>{{ $course->tarikh }}</td>
+                                <td>{{ $course->tarikh->format('d-m-Y') }}</td>
                                 <td>{{ $course->lokasi->nama }}</td>
                                 <td>{{ $course->tempoh }}</td>
                             </tr>

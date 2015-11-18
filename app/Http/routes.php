@@ -41,7 +41,7 @@ Route::get('/logout', [
 
 // ADMIN
 
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
+Route::group(['prefix' => 'admin'], function() {
 
     Route::get('index', [
         'as'    => 'admin.index',
