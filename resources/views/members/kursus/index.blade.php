@@ -58,7 +58,7 @@
                             <th>Nama Kursus</th>
                             <th>Tarikh</th>
                             <th>Lokasi</th>
-                            <th>Tempoh (hari)</th>
+                            <th><div align="center">Tempoh (hari)</div></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -67,7 +67,7 @@
                                 <td>{{ $course->nama }}</td>
                                 <td>{{ $course->tarikh->format('d-m-Y') }}</td>
                                 <td>{{ $course->lokasi->nama }}</td>
-                                <td>{{ $course->tempoh }}</td>
+                                <td align="center">{{ $course->tempoh }}</td>
                             </tr>
                         @endforeach
                         </tbody>

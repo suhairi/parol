@@ -18,6 +18,7 @@ class KursusController extends Controller
 
         $locations = Lokasi::all();
         $courses = Kursus::where('tarikh', 'like', $tarikh . '%')
+            ->orderBy('tarikh', 'asc')
             ->get();
 
         if($locations->isEmpty())
