@@ -68,7 +68,7 @@
             var timeout = setTimeout(function() {
                 // The refresh is occurring here
                 window.location.href = "{{ route('admin.ringkasan4') }}";
-            }, 2000);
+            }, 10000);
 
             $('#pause').click(function(e) {
                 clearTimeout(timeout);
