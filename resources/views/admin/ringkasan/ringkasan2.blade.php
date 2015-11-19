@@ -103,19 +103,16 @@
                         </tr>
                     </table>
                 </div>
+
             </div>
+
         </div>
+
     @else
         <div class="col-xs-8 danger">Tiada Data.</div>
     @endif
-
-
-    {{--<meta http-equiv="refresh" content="10; url={{ route('admin.ringkasan3') }} ">--}}
-    <br /><br /><br /><br /><br />
-    @include('admin.includes._controlButtons')
-        {{--// hello world--}}
-
     </div>
+    @include('admin.includes._controlButtons')
 
     <script>
 
