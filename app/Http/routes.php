@@ -226,7 +226,7 @@ Route::group(['prefix' => 'members', 'middleware' => 'auth'], function() {
 
     //  KURSUS
 
-    Route::get('kursus', [
+    Route::get('/kursus', [
         'as'    => 'members.rekod.kursus.index',
         'uses'  =>'Members\KursusController@index'
     ]);

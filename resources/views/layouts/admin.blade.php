@@ -30,6 +30,8 @@
 
 @include('layouts.nav_admin')
 
+{{--// hello world--}}
+
 <div class="container" role="main">
     @include('errors._notifications')
     @yield('content')

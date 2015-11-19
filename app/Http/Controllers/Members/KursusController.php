@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Session;
 
 class KursusController extends Controller
 {
+// hello world
     public function index()
     {
         $tarikh = date('Y-m');

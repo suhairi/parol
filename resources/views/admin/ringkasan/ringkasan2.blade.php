@@ -113,6 +113,7 @@
     {{--<meta http-equiv="refresh" content="10; url={{ route('admin.ringkasan3') }} ">--}}
     <br /><br /><br /><br /><br />
     @include('admin.includes._controlButtons')
+        {{--// hello world--}}
 
     </div>
 

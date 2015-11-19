@@ -181,6 +181,7 @@ class RecordsController extends Controller
 
             ]
         ]];
+        // hello world--}}
 
         return View('admin.ringkasan.ringkasan3', compact('data', 'charts', 'jumlah'));
     }
