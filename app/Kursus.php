@@ -10,6 +10,8 @@ class Kursus extends Model
     protected $primaryKey = 'id';
     protected $fillable = ['nama', 'tarikh', 'lokasi_id', 'tempoh'];
 
+    public $dates = ['tarikh'];
+
 
     public function lokasi()
     {

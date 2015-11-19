@@ -129,6 +129,16 @@ class RecordsController extends Controller
             $jumlah += (int)$data[$i]['jumlah'];
         }
 
+        $jumlahAlorSetar = $data[0]['jumlah'] + $data[1]['jumlah'];
+        $jumlahPokokSena = $data[2]['jumlah'] + $data[3]['jumlah'];
+        $jumlahSungaiPetani = $data[4]['jumlah'] + $data[5]['jumlah'];
+        $jumlahParol = $data[6]['jumlah'] + $data[7]['jumlah'];
+
+        $peratusAlorSetar = number_format(($jumlahAlorSetar / $jumlah * 100), 2);
+        $peratusPokokSena = number_format(($jumlahPokokSena / $jumlah * 100), 2);
+        $peratusSungaiPetani = number_format(($jumlahSungaiPetani / $jumlah * 100), 2);
+        $peratusParol = number_format(($jumlahParol / $jumlah * 100), 2);
+
         $charts['chart'] = [
             'plotBackgroundColor' => null,
             'plotBorderWidth' => null,
@@ -136,14 +146,14 @@ class RecordsController extends Controller
             'type' => 'pie'
         ];
         $charts['title'] = ['text' => 'Bilangan Banduan / Tahanan'];
-        $charts['tooltip'] = ['pointFormat' => '{series.name}: <b>{point.y} </b>'];
+        $charts['tooltip'] = ['pointFormat' => '{series.name}: <b>{point.percentage:.1f}%</b>'];
         $charts['credits'] = false;
         $charts['plotOptions'] = [
             'pie' => [
                 'allowPointSelect' => true,
                 'cursor' => 'pointer',
-                'dataLabels' => ['enabled' => true],
-                'showInLegend' => false
+                'dataLabels' => ['enabled' => true, 'format' => '<b>{point.name}</b>: {point.percentage:.1f} %'],
+                'showInLegend' => true
             ],
         ];
         $charts['series'] = [[
@@ -152,21 +162,21 @@ class RecordsController extends Controller
             'data' => [
                 [
                     'name' => 'Alor Setar',
-                    'y' => $data[0]['jumlah'] + $data[1]['jumlah'],
+                    'y' => (int)$peratusAlorSetar,
                     'sliced' => true,
                     'selected' => true
                 ],
                 [
                     'name' => 'Pokok Sena',
-                    'y' => $data[2]['jumlah'] + $data[3]['jumlah']
+                    'y' => (int)$peratusPokokSena
                 ],
                 [
                     'name' => 'Sungai Petani',
-                    'y' => $data[4]['jumlah'] + $data[5]['jumlah']
+                    'y' => (int)$peratusSungaiPetani
                 ],
                 [
                     'name' => 'Parol',
-                    'y' => $data[6]['jumlah'] + $data[7]['jumlah']
+                    'y' => (int)$peratusParol
                 ]
 
             ]

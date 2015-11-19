@@ -43,6 +43,7 @@ class UserTableSeeder extends Seeder
         Cawangan::create(['nama' => 'ALOR SETAR']);
         Cawangan::create(['nama' => 'POKOK SENA']);
         Cawangan::create(['nama' => 'SUNGAI PETANI']);
+        Cawangan::create(['nama' => 'PAROL']);
 
         Warganegara::create(['nama' => 'WARGANEGARA']);
         Warganegara::create(['nama' => 'WARGA ASING']);
