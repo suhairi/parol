@@ -15,7 +15,7 @@
                 <li><a href="{{ route('members.rekod.index') }}">Rekod Maklumat</a></li>
                 <li><a href="{{ route('members.rekod.kursus.index') }}">Rekod Kursus</a></li>
                 <li><a href="{{ route('members.carian') }}">Carian</a></li>
-                <li><a href="{{ route('admin.index') }}">Admin Slide</a></li>
+                <li><a href="{{ route('admin.index') }}" target="_blank">Admin Slide</a></li>
 
             </ul>
             <ul class="nav navbar-nav navbar-right">
