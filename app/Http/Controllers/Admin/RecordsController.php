@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Details;
+use App\Keluarmasuk;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -103,6 +104,29 @@ class RecordsController extends Controller
         );
     }
 
+    public function ringkasan1()
+    {
+        $year = Carbon::now()->format('Y');
+        $data = [];
+
+        for($i = 1; $i <= 9; $i++)
+        {
+
+            for ($j = 1; $j <= 12; $j++) {
+                $detail = Keluarmasuk::where('tarikh', 'like', $year . '-' . $j . '-%')
+                    ->where('kesalahan', $i)
+                    ->sum('jumlah');
+
+                array_push($data, [$i . '_' . $j => $detail]);
+            }
+        }
+
+        $jumlah = 1;
+
+//        dd($data);
+
+        return View('admin.ringkasan.ringkasan1', compact('data', 'jumlah'));
+    }
     public function ringkasan2()
     {
         $tarikh = Carbon::now()->format('Y-m-d');
