@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Members;
 use App\Cawangan;
 use App\Details;
 use App\Kategori;
+use App\Keluarmasuk;
 use App\Kesalahan;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
@@ -87,8 +88,7 @@ class RekodController extends Controller
             ->where('cawangan_id', Request::get('cawangan_id'))
             ->get();
 
-        $datas = [];
-
+        $datas = $datas2 = [];
 
         if($cawangan_id == 1 || $cawangan_id == 2)
             $count = 16;
@@ -148,8 +148,98 @@ class RekodController extends Controller
             } //end kesalahan
         }
 
+        $details = Keluarmasuk::where('tarikh', 'like', Request::get('tarikh') . '%')
+            ->where('cawangan_id', $cawangan_id)
+            ->get();
+
+        $details = Details::where('tarikh', 'like', Request::get('tarikh') . '%')
+            ->where('cawangan_id', Request::get('cawangan_id'))
+            ->get();
+
+        if(!empty($details->toArray()))
+        {
+            for ($i = 1; $i <= 9; $i++)
+            {
+                $detail = Keluarmasuk::where('tarikh', 'like', Request::get('tarikh') . '%')
+                    ->where('cawangan_id', $cawangan_id)
+                    ->where('kesalahan', $i)
+                    ->where('bangsa', 'melayu')
+                    ->first();
+
+                array_push($datas2, [
+                    $i . '_melayu' => $detail->jumlah
+                ]);
+
+                $detail = Keluarmasuk::where('tarikh', 'like', Request::get('tarikh') . '%')
+                    ->where('cawangan_id', $cawangan_id)
+                    ->where('kesalahan', $i)
+                    ->where('bangsa', 'cina')
+                    ->first();
+                array_push($datas2, [
+                    $i . '_cina' => $detail->jumlah
+                ]);
+
+                $detail = Keluarmasuk::where('tarikh', 'like', Request::get('tarikh') . '%')
+                    ->where('cawangan_id', $cawangan_id)
+                    ->where('kesalahan', $i)
+                    ->where('bangsa', 'india')
+                    ->first();
+                array_push($datas2, [
+                    $i . '_india' => $detail->jumlah
+                ]);
+
+                $detail = Keluarmasuk::where('tarikh', 'like', Request::get('tarikh') . '%')
+                    ->where('cawangan_id', $cawangan_id)
+                    ->where('kesalahan', $i)
+                    ->where('bangsa', 'singh')
+                    ->first();
+                array_push($datas2, [
+                    $i . '_singh' => $detail->jumlah
+                ]);
+
+                $detail = Keluarmasuk::where('tarikh', 'like', Request::get('tarikh') . '%')
+                    ->where('cawangan_id', $cawangan_id)
+                    ->where('kesalahan', $i)
+                    ->where('bangsa', 'pathan')
+                    ->first();
+                array_push($datas2, [
+                    $i . '_pathan' => $detail->jumlah
+                ]);
+
+                $detail = Keluarmasuk::where('tarikh', 'like', Request::get('tarikh') . '%')
+                    ->where('cawangan_id', $cawangan_id)
+                    ->where('kesalahan', $i)
+                    ->where('bangsa', 'ptetap')
+                    ->first();
+                array_push($datas2, [
+                    $i . '_ptetap' => $detail->jumlah
+                ]);
+
+                $detail = Keluarmasuk::where('tarikh', 'like', Request::get('tarikh') . '%')
+                    ->where('cawangan_id', $cawangan_id)
+                    ->where('kesalahan', $i)
+                    ->where('bangsa', 'llb')
+                    ->first();
+                array_push($datas2, [
+                    $i . '_llb' => $detail->jumlah
+                ]);
+
+                $detail = Keluarmasuk::where('tarikh', 'like', Request::get('tarikh') . '%')
+                    ->where('cawangan_id', $cawangan_id)
+                    ->where('kesalahan', $i)
+                    ->where('bangsa', 'wanita')
+                    ->first();
+                array_push($datas2, [
+                    $i . '_wanita' => $detail->jumlah
+                ]);
+
+            }
+        }
+
+//        dd($datas2);
+//        return $datas2[45]['6_ptetap'];
         return View('members.rekod.display.details',
-            compact('bil', 'details', 'tarikh', 'cawangan', 'flag', 'datas'));
+            compact('bil', 'details', 'tarikh', 'cawangan', 'flag', 'datas', 'datas2'));
     }
 
     public function parol()
@@ -307,6 +397,76 @@ class RekodController extends Controller
             } // end warga
         } //end kesalahan
 
+        // Create::Keluarmasuk
+
+        for($i = 1; $i <= 9; $i++)
+        {
+            Keluarmasuk::create([
+                'tarikh'        => $tarikh,
+                'cawangan_id'   => $cawangan_id,
+                'kesalahan'     => $i,
+                'bangsa'        => 'melayu',
+                'jumlah'        => (int)Request::get($i .'_melayu')
+            ]);
+
+            Keluarmasuk::create([
+                'tarikh'        => $tarikh,
+                'cawangan_id'   => $cawangan_id,
+                'kesalahan'     => $i,
+                'bangsa'        => 'cina',
+                'jumlah'        => (int)Request::get($i .'_cina')
+            ]);
+
+
+            Keluarmasuk::create([
+                'tarikh'        => $tarikh,
+                'cawangan_id'   => $cawangan_id,
+                'kesalahan'     => $i,
+                'bangsa'        => 'india',
+                'jumlah'        => (int)Request::get($i .'_india')
+            ]);
+
+            Keluarmasuk::create([
+                'tarikh'        => $tarikh,
+                'cawangan_id'   => $cawangan_id,
+                'kesalahan'     => $i,
+                'bangsa'        => 'singh',
+                'jumlah'        => (int)Request::get($i .'_singh')
+            ]);
+
+            Keluarmasuk::create([
+                'tarikh'        => $tarikh,
+                'cawangan_id'   => $cawangan_id,
+                'kesalahan'     => $i,
+                'bangsa'        => 'pathan',
+                'jumlah'        => (int)Request::get($i .'_pathan')
+            ]);
+
+            Keluarmasuk::create([
+                'tarikh'        => $tarikh,
+                'cawangan_id'   => $cawangan_id,
+                'kesalahan'     => $i,
+                'bangsa'        => 'ptetap',
+                'jumlah'        => (int)Request::get($i .'_ptetap')
+            ]);
+
+            Keluarmasuk::create([
+                'tarikh'        => $tarikh,
+                'cawangan_id'   => $cawangan_id,
+                'kesalahan'     => $i,
+                'bangsa'        => 'llb',
+                'jumlah'        => (int)Request::get($i .'_llb')
+            ]);
+
+            Keluarmasuk::create([
+                'tarikh'        => $tarikh,
+                'cawangan_id'   => $cawangan_id,
+                'kesalahan'     => $i,
+                'bangsa'        => 'wanita',
+                'jumlah'        => (int)Request::get($i .'_wanita')
+            ]);
+        }
+
         return Redirect::back();
     }
 
@@ -367,6 +527,99 @@ class RekodController extends Controller
 
             } // end warga
         } //end kesalahan
+
+        // Update Keluarmasuk
+
+        for($i = 1; $i <= 9; $i++)
+        {
+            if(Request::get($i . '_melayu'))
+            {
+                $bangsa = 'melayu';
+
+                Keluarmasuk::where('tarikh', $tarikh)
+                    ->where('cawangan_id',$cawangan_id)
+                    ->where('kesalahan', $i)
+                    ->where('bangsa', 'melayu')
+                    ->update(['jumlah' => Request::get($i .'_' . $bangsa)]);
+            }
+
+            if(Request::get($i . '_cina'))
+            {
+                $bangsa = 'cina';
+
+                Keluarmasuk::where('tarikh', $tarikh)
+                    ->where('cawangan_id',$cawangan_id)
+                    ->where('kesalahan', $i)
+                    ->where('bangsa', 'cina')
+                    ->update(['jumlah' => Request::get($i .'_' . $bangsa)]);
+            }
+
+            if(Request::get($i . '_india'))
+            {
+                $bangsa = 'india';
+
+                Keluarmasuk::where('tarikh', $tarikh)
+                    ->where('cawangan_id',$cawangan_id)
+                    ->where('kesalahan', $i)
+                    ->where('bangsa', 'india')
+                    ->update(['jumlah' => Request::get($i .'_' . $bangsa)]);
+            }
+
+            if(Request::get($i . '_singh'))
+            {
+                $bangsa = 'singh';
+
+                Keluarmasuk::where('tarikh', $tarikh)
+                    ->where('cawangan_id',$cawangan_id)
+                    ->where('kesalahan', $i)
+                    ->where('bangsa', 'singh')
+                    ->update(['jumlah' => Request::get($i .'_' . $bangsa)]);
+            }
+
+            if(Request::get($i . '_pathan'))
+            {
+                $bangsa = 'pathan';
+
+                Keluarmasuk::where('tarikh', $tarikh)
+                    ->where('cawangan_id',$cawangan_id)
+                    ->where('kesalahan', $i)
+                    ->where('bangsa', 'pathan')
+                    ->update(['jumlah' => Request::get($i .'_' . $bangsa)]);
+            }
+
+            if(Request::get($i . '_ptetap'))
+            {
+                $bangsa = 'ptetap';
+
+                Keluarmasuk::where('tarikh', $tarikh)
+                    ->where('cawangan_id',$cawangan_id)
+                    ->where('kesalahan', $i)
+                    ->where('bangsa', 'ptetap')
+                    ->update(['jumlah' => Request::get($i .'_' . $bangsa)]);
+            }
+
+            if(Request::get($i . '_llb'))
+            {
+                $bangsa = 'llb';
+
+                Keluarmasuk::where('tarikh', $tarikh)
+                    ->where('cawangan_id',$cawangan_id)
+                    ->where('kesalahan', $i)
+                    ->where('bangsa', 'llb')
+                    ->update(['jumlah' => Request::get($i .'_' . $bangsa)]);
+            }
+
+            if(Request::get($i . '_wanita'))
+            {
+                $bangsa = 'wanita';
+
+                Keluarmasuk::where('tarikh', $tarikh)
+                    ->where('cawangan_id',$cawangan_id)
+                    ->where('kesalahan', $i)
+                    ->where('bangsa', 'wanita')
+                    ->update(['jumlah' => Request::get($i .'_' . $bangsa)]);
+            }
+        }
 
         return Redirect::back();
     }

@@ -31,8 +31,3 @@
     @include('forms._details_kem')
 
 @endif
-
-
-
-
-

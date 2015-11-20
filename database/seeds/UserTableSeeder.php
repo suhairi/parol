@@ -100,6 +100,7 @@ class UserTableSeeder extends Seeder
         Kesalahan::create(['nama' => 'PAROL', 'kategori_id' => '4', 'kod' => 'PAROL']);
         Kesalahan::create(['nama' => 'MUDA', 'kategori_id' => '5', 'kod' => 'MUDA']);
         Kesalahan::create(['nama' => 'KEM', 'kategori_id' => '6', 'kod' => 'KEM']);
+        Kesalahan::create(['nama' => 'POCA', 'kategori_id' => '6', 'kod' => 'KEM']);
 
 
         Pegawai::create(['nama' => 'NOOR HAZWAN B AB HAMID', 'pangkat' => 'KPL 15883']);

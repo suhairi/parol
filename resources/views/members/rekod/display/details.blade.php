@@ -22,6 +22,14 @@
                             <td>{{ $tarikh }}</td>
                         </tr>
                     </table>
+
+                    @if(empty($datas))
+                        <form method="post" action="{{ route('members.rekod.index.post') }}">
+                    @else
+                        <form method="post" action="{{ route('members.rekod.index.update') }}">
+                    @endif
+                    {{ csrf_field() }}
+
                     <table class="table table-bordered">
                         <thead class="alert alert-info">
                             <tr align="center">
@@ -51,21 +59,39 @@
                             </tr>
                         </thead>
                         <tbody>
-                        @if(empty($datas))
-                            <form method="post" action="{{ route('members.rekod.index.post') }}">
-                                @else
-                                    <form method="post" action="{{ route('members.rekod.index.update') }}">
-                                        @endif
-                                        {{ csrf_field() }}
-                                        <input type="hidden" name="tarikh" value="{{ $tarikh }}">
-                                        <input type="hidden" name="cawangan" value="{{ $cawangan }}">
-                                        @include('forms._details')
-                                        <tr>
-                                            <td colspan="13" align="right"><button class="btn btn-primary">Kemaskini Rekod</button></td>
-                                        </tr>
-                                    </form>
+                            <input type="hidden" name="tarikh" value="{{ $tarikh }}">
+                            <input type="hidden" name="cawangan" value="{{ $cawangan }}">
+                            @include('forms._details')
                         </tbody>
                     </table>
+                    <table class="table table-bordered">
+                        <thead class="alert alert-info">
+                        <tr>
+                            <th colspan="10">Pergerakan Masuk</th>
+                        </tr>
+                        <tr align="center">
+
+                        </tr>
+                        <tr>
+                            <th><div align="center">Perkara</div></th>
+                            <th><div align="center">Melayu</div></th>
+                            <th><div align="center">Cina</div></th>
+                            <th><div align="center">India</div></th>
+                            <th><div align="center">Singh</div></th>
+                            <th><div align="center">Pathan</div></th>
+                            <th><div align="center">P. Tetap</div></th>
+                            <th><div align="center">LLB</div></th>
+                            <th><div align="center">Wanita</div></th>
+                            <th><div align="center">Jumlah</div></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            @include('forms._keluarmasuk')
+                        </tbody>
+                    </table>
+                    <div align="right"><button class="btn btn-primary">Kemaskini Rekod</button></div>
+
+                    </form>
                 </div>
             </div>
 
