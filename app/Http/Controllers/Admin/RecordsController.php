@@ -104,7 +104,7 @@ class RecordsController extends Controller
         );
     }
 
-    public function ringkasan1()
+    public function ringkasan1_1()
     {
         $year = Carbon::now()->format('Y');
         $data = [];
@@ -114,6 +114,7 @@ class RecordsController extends Controller
 
             for ($j = 1; $j <= 12; $j++) {
                 $detail = Keluarmasuk::where('tarikh', 'like', $year . '-' . $j . '-%')
+                    ->where('cawangan_id', 1)
                     ->where('kesalahan', $i)
                     ->sum('jumlah');
 
@@ -125,8 +126,57 @@ class RecordsController extends Controller
 
 //        dd($data);
 
-        return View('admin.ringkasan.ringkasan1', compact('data', 'jumlah'));
+        return View('admin.ringkasan.ringkasan1_1', compact('data', 'jumlah'));
     }
+    public function ringkasan1_2()
+    {
+        $year = Carbon::now()->format('Y');
+        $data = [];
+
+        for($i = 1; $i <= 9; $i++)
+        {
+
+            for ($j = 1; $j <= 12; $j++) {
+                $detail = Keluarmasuk::where('tarikh', 'like', $year . '-' . $j . '-%')
+                    ->where('cawangan_id', 2)
+                    ->where('kesalahan', $i)
+                    ->sum('jumlah');
+
+                array_push($data, [$i . '_' . $j => $detail]);
+            }
+        }
+
+        $jumlah = 1;
+
+//        dd($data);
+
+        return View('admin.ringkasan.ringkasan1_2', compact('data', 'jumlah'));
+    }
+    public function ringkasan1_3()
+    {
+        $year = Carbon::now()->format('Y');
+        $data = [];
+
+        for($i = 1; $i <= 9; $i++)
+        {
+
+            for ($j = 1; $j <= 12; $j++) {
+                $detail = Keluarmasuk::where('tarikh', 'like', $year . '-' . $j . '-%')
+                    ->where('cawangan_id', 3)
+                    ->where('kesalahan', $i)
+                    ->sum('jumlah');
+
+                array_push($data, [$i . '_' . $j => $detail]);
+            }
+        }
+
+        $jumlah = 1;
+
+//        dd($data);
+
+        return View('admin.ringkasan.ringkasan1_3', compact('data', 'jumlah'));
+    }
+
     public function ringkasan2()
     {
         $tarikh = Carbon::now()->format('Y-m-d');

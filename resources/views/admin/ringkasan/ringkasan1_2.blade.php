@@ -10,7 +10,7 @@
                 <table class="table table-bordered">
                     <thead class="alert alert-info">
                     <tr>
-                        <th colspan="14">Pergerakan Masuk</th>
+                        <th colspan="14">Pergerakan Masuk - Pokok Sena</th>
                     </tr>
                     <tr align="center">
 
@@ -80,8 +80,8 @@
                             @for($j = 1; $j <= 12; $j++)
                                 <td>{{ $data[$count][$i . '_' . $j] }}</td>
                                 <?php
-                                    $jumlah += $data[$count][$i . '_' . $j];
-                                    $count++;
+                                $jumlah += $data[$count][$i . '_' . $j];
+                                $count++;
                                 ?>
                             @endfor
                             <td>{{ $jumlah }}</td>
@@ -109,7 +109,7 @@
 
             var timeout = setTimeout(function() {
                 // The refresh is occurring here
-                window.location.href = "{{ route('admin.ringkasan2') }}";
+                window.location.href = "{{ route('admin.ringkasan1_3') }}";
             }, 10000);
 
             $('#pause').click(function(e) {
@@ -118,11 +118,11 @@
             });
 
             $('#next').click(function() {
-                window.location = "{{ route('admin.ringkasan2') }}";
+                window.location = "{{ route('admin.ringkasan1_3') }}";
             });
 
             $('#previous').click(function() {
-                window.location = "{{ route('admin.index') }}";
+                window.location = "{{ route('admin.ringkasan1_1') }}";
             });
 
 

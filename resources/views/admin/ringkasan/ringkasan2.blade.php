@@ -133,7 +133,7 @@
             });
 
             $('#previous').click(function() {
-                window.location = "{{ route('admin.ringkasan1') }}";
+                window.location = "{{ route('admin.ringkasan1_3') }}";
             });
 
 

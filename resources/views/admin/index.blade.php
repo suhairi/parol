@@ -119,7 +119,7 @@
 
                 var timeout = setTimeout(function() {
                     // The refresh is occurring here
-                    window.location.href = "{{ route('admin.ringkasan1') }}";
+                    window.location.href = "{{ route('admin.ringkasan1_1') }}";
                 }, 10000);
 
                 $('#pause').click(function(e) {
@@ -128,7 +128,7 @@
                 });
 
                 $('#next').click(function() {
-                    window.location = "{{ route('admin.ringkasan1') }}";
+                    window.location = "{{ route('admin.ringkasan1_1') }}";
                 });
 
                 $('#previous').click(function() {
