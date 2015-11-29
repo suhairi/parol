@@ -16,20 +16,20 @@
 
                     </tr>
                     <tr>
-                        <th><div align="center">Perkara</div></th>
-                        <th><div align="center">Jan</div></th>
-                        <th><div align="center">Feb</div></th>
-                        <th><div align="center">Mac</div></th>
-                        <th><div align="center">April</div></th>
-                        <th><div align="center">Mei</div></th>
-                        <th><div align="center">Jun</div></th>
-                        <th><div align="center">Julai</div></th>
-                        <th><div align="center">Ogos</div></th>
-                        <th><div align="center">Sept</div></th>
-                        <th><div align="center">Oktober</div></th>
-                        <th><div align="center">November</div></th>
-                        <th><div align="center">Disember</div></th>
-                        <th><div align="center">Jumlah</div></th>
+                        <th><div align="center"><strong>Perkara</strong></div></th>
+                        <th><div align="center"><strong>Jan</strong></div></th>
+                        <th><div align="center"><strong>Feb</strong></div></th>
+                        <th><div align="center"><strong>Mac</strong></div></th>
+                        <th><div align="center"><strong>Apr</strong></div></th>
+                        <th><div align="center"><strong>Mei</strong></div></th>
+                        <th><div align="center"><strong>Jun</strong></div></th>
+                        <th><div align="center"><strong>Jul</strong></div></th>
+                        <th><div align="center"><strong>Ogos</strong></div></th>
+                        <th><div align="center"><strong>Sept</strong></div></th>
+                        <th><div align="center"><strong>Okt</strong></div></th>
+                        <th><div align="center"><strong>Nov</strong></div></th>
+                        <th><div align="center"><strong>Dis</strong></div></th>
+                        <th><div align="center"><strong>Jumlah</strong></div></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -75,16 +75,16 @@
                         @endif
 
                         <tr>
-                            <td>{{ $hukuman }}</td>
+                            <td><strong>{{ $hukuman }}</strong></td>
                             <?php $jumlah = 0; ?>
                             @for($j = 1; $j <= 12; $j++)
-                                <td>{{ $data[$count][$i . '_' . $j] }}</td>
+                                <td align="center">{{ $data[$count][$i . '_' . $j] }}</td>
                                 <?php
                                     $jumlah += $data[$count][$i . '_' . $j];
                                     $count++;
                                 ?>
                             @endfor
-                            <td>{{ $jumlah }}</td>
+                            <td align="center"><strong>{{ $jumlah }}</strong></td>
 
                         </tr>
 
@@ -122,7 +122,7 @@
             });
 
             $('#previous').click(function() {
-                window.location = "{{ route('admin.index') }}";
+                window.location = "{{ route('admin.kursus') }}";
             });
 
 

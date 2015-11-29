@@ -5,9 +5,7 @@
     <div class="row">
 
     @if($jumlah != 0)
-        <div class="col-xs-2">&nbsp;</div>
-        <div class="col-xs-8">
-
+        <div class="col-xs-12">
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h4>ALOR SETAR / POKOK SENA / SUNGAI PETANI / PAROL</h4>
@@ -54,7 +52,7 @@
             {{--// hello world--}}
     </div>
     @else
-        <div class="col-xs-8 danger">Tiada Data.</div>
+        <div class="col-xs-12 danger">Tiada Data.</div>
     @endif
 
 

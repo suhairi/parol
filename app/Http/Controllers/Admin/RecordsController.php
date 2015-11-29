@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Kursus;
 
 class RecordsController extends Controller
 {
@@ -102,6 +103,17 @@ class RecordsController extends Controller
                 'rp_L', 'rp_P'
             )
         );
+    }
+
+    public function kursus()
+    {
+        $tarikh = date('Y-m');
+
+        $courses = Kursus::where('tarikh', 'like', $tarikh . '%')
+            ->orderBy('tarikh', 'asc')
+            ->get();
+
+        return View('admin.ringkasan.kursus', compact('courses'));
     }
 
     public function ringkasan1_1()

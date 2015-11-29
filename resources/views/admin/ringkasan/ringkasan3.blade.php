@@ -5,8 +5,7 @@
     <div class="row">
 
     @if($jumlah != '0')
-        <div class="col-xs-2">&nbsp;</div>
-        <div class="col-xs-8">
+        <div class="col-xs-12">
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h4>Ringkasan Jumlah Banduan / Tahanan</h4>
@@ -54,7 +53,7 @@
 
         </div>
     @else
-        <div class="col-xs-8 danger">Tiada Data.</div>
+        <div class="col-xs-12 danger">Tiada Data.</div>
     @endif
 
 

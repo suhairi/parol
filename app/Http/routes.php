@@ -48,6 +48,11 @@ Route::group(['prefix' => 'admin'], function() {
         'uses'  => 'Admin\RecordsController@index'
     ]);
 
+    Route::get('ringkasan/kursus', [
+        'as'    => 'admin.kursus',
+        'uses'  => 'Admin\RecordsController@kursus'
+    ]);
+
     Route::get('ringkasan/ringkasan1_1', [
         'as'    => 'admin.ringkasan1_1',
         'uses'  => 'Admin\RecordsController@ringkasan1_1'
