@@ -257,6 +257,22 @@ Route::group(['prefix' => 'members', 'middleware' => 'auth'], function() {
         'uses'  => 'Members\KursusController@kursusPost'
     ]);
 
+    Route::group(['prefix' => 'laporan'], function() {
+
+        Route::get('alorsetar', [
+            'as'    => 'members.laporan.alorsetar',
+            'uses'  => 'Members\LaporanController@alorsetar'
+        ]);
+        Route::get('pokoksena', [
+            'as'    => 'members.laporan.pokoksena',
+            'uses'  => 'Members\LaporanController@pokoksena'
+        ]);
+        Route::get('sungaipetani', [
+            'as'    => 'members.laporan.sungaipetani',
+            'uses'  => 'Members\LaporanController@sungaipetani'
+        ]);
+
+    });
 
 
     // CETAK
@@ -272,6 +288,12 @@ Route::group(['prefix' => 'members', 'middleware' => 'auth'], function() {
             'as'    => 'members.rekod.parol.cetak',
             'uses'  => 'Members\CetakController@parol'
         ]);
+
+        Route::get('/laporan/{cawangan}', [
+            'as'    => 'members.laporan.cetak',
+            'uses'  => 'Members\CetakController@laporan'
+        ]);
+
 
     });
 

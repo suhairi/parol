@@ -4,16 +4,18 @@ namespace App\Http\Controllers\Members;
 
 use App\Cawangan;
 use App\Details;
-use Requesst;
+use Request;
 use App\Http\Controllers\Controller;
+use App\Keluarmasuk;
+use Carbon\Carbon;
 
 class CetakController extends Controller
 {
     public function index($cawangan, $tarikh)
     {
 
-        $cawangan_id = Cawangan::where('nama', $cawangan)->first();
-        $cawangan_id = $cawangan_id->id;
+        $cawangan = Cawangan::where('nama', $cawangan)->first();
+        $cawangan_id = $cawangan->id;
 
         if ($cawangan_id == 4)
             return Redirect::route('members.rekod.parol.cetak', ['tarikh' => $tarikh]);
@@ -117,6 +119,29 @@ class CetakController extends Controller
             }
         }
         return View('members.rekod.cetak.details_parol_cetak', compact('tarikh', 'cawangan', 'flag', 'datas'));
+    }
+
+    public function laporan($cawangan){
+
+        $year = Carbon::now()->format('Y');
+        $data = [];
+
+        return $cawangan;
+
+        for($i = 1; $i <= 9; $i++)
+        {
+
+            for ($j = 1; $j <= 12; $j++) {
+                $detail = Keluarmasuk::where('tarikh', 'like', $year . '-' . $j . '-%')
+                    ->where('cawangan_id', $cawangan)
+                    ->where('kesalahan', $i)
+                    ->sum('jumlah');
+
+                array_push($data, [$i . '_' . $j => $detail]);
+            }
+        }
+
+        return View('members.laporan.cetak', compact('data', 'jumlah'));
     }
 
 }
