@@ -151,7 +151,7 @@ class CetakController extends Controller
 
         $jumlah = 1;
 
-        return View('members.laporan.cetak', compact('data', 'jumlah', 'cawangan'));
+        return View('members.laporan.cetak', compact('data', 'jumlah', 'cawangan', 'year'));
     }
 
 }

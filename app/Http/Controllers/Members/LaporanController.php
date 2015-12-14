@@ -34,7 +34,7 @@ class LaporanController extends Controller
 
 //        dd($data);
 
-        return View('members.laporan.alorsetar', compact('data', 'jumlah', 'cawangan'));
+        return View('members.laporan.alorsetar', compact('data', 'jumlah', 'cawangan', 'year'));
     }
 
     public function pokoksena() {
@@ -60,7 +60,7 @@ class LaporanController extends Controller
 
 //        dd($data);
 
-        return View('members.laporan.pokoksena', compact('data', 'jumlah', 'cawangan'));
+        return View('members.laporan.pokoksena', compact('data', 'jumlah', 'cawangan', 'year'));
     }
 
     public function sungaipetani() {
@@ -86,7 +86,7 @@ class LaporanController extends Controller
 
 //        dd($data);
 
-        return View('members.laporan.sungaipetani', compact('data', 'jumlah', 'cawangan'));
+        return View('members.laporan.sungaipetani', compact('data', 'jumlah', 'cawangan', 'year'));
     }
 
 

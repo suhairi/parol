@@ -17,7 +17,7 @@
                 <table class="table table-bordered">
                     <thead class="alert alert-info">
                     <tr>
-                        <th colspan="14">Pergerakan Masuk - Alor Setar</th>
+                        <th colspan="14">Pergerakan Masuk - Alor Setar Bagi Tahun {{ $year }}</th>
                     </tr>
                     <tr align="center">
 
