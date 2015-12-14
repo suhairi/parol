@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Members;
 
 use App\Cawangan;
 use App\Details;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 use Request;
 use App\Http\Controllers\Controller;
 use App\Keluarmasuk;
@@ -15,7 +17,14 @@ class CetakController extends Controller
     {
 
         $cawangan = Cawangan::where('nama', $cawangan)->first();
-        $cawangan_id = $cawangan->id;
+
+        if($cawangan != null){
+            $cawangan_id = $cawangan->id;
+
+        } else {
+            Session::flash('error', 'Gagal. Cawangan ID.');
+            return Redirect::back();
+        }
 
         if ($cawangan_id == 4)
             return Redirect::route('members.rekod.parol.cetak', ['tarikh' => $tarikh]);
@@ -126,11 +135,8 @@ class CetakController extends Controller
         $year = Carbon::now()->format('Y');
         $data = [];
 
-        return $cawangan;
-
         for($i = 1; $i <= 9; $i++)
         {
-
             for ($j = 1; $j <= 12; $j++) {
                 $detail = Keluarmasuk::where('tarikh', 'like', $year . '-' . $j . '-%')
                     ->where('cawangan_id', $cawangan)
@@ -141,7 +147,11 @@ class CetakController extends Controller
             }
         }
 
-        return View('members.laporan.cetak', compact('data', 'jumlah'));
+        $cawangan = Cawangan::find($cawangan)->nama;
+
+        $jumlah = 1;
+
+        return View('members.laporan.cetak', compact('data', 'jumlah', 'cawangan'));
     }
 
 }

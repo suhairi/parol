@@ -7,7 +7,13 @@
         @if($jumlah != 0)
 
             <div class="col-xs-12">
-                <div align="right"><a href="{{ route('members.laporan.cetak', ['cawangan' => $cawangan]) }}"><i class="glyphicon glyphicon-print"></i> Cetak</a> <br /><br/> </div>
+                <div align="right">
+                    <i class="glyphicon glyphicon-print"></i>
+                    <a href="{{ route('members.laporan.cetak', ['cawangan' => $cawangan]) }}" target="_blank">
+                        Cetak
+                    </a>
+                    <br /><br/>
+                </div>
                 <table class="table table-bordered">
                     <thead class="alert alert-info">
                     <tr>

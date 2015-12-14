@@ -279,6 +279,11 @@ Route::group(['prefix' => 'members', 'middleware' => 'auth'], function() {
 
     Route::group(['prefix' => 'cetak'], function() {
 
+        Route::get('/laporan/{cawangan}', [
+            'as'    => 'members.laporan.cetak',
+            'uses'  => 'Members\CetakController@laporan'
+        ]);
+
         Route::get('/{cawangan}/{tarikh}', [
             'as'    => 'members.rekod.cetak',
             'uses'  => 'Members\CetakController@index'
@@ -289,10 +294,7 @@ Route::group(['prefix' => 'members', 'middleware' => 'auth'], function() {
             'uses'  => 'Members\CetakController@parol'
         ]);
 
-        Route::get('/laporan/{cawangan}', [
-            'as'    => 'members.laporan.cetak',
-            'uses'  => 'Members\CetakController@laporan'
-        ]);
+
 
 
     });

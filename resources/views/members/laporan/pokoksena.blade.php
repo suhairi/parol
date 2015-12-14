@@ -8,8 +8,9 @@
 
             <div class="col-xs-12">
                 <div align="right">
-                    <a href="{{ route('members.laporan.cetak', ['cawangan' => $cawangan]) }}">
-                        <i class="glyphicon glyphicon-print"></i> Cetak
+                    <i class="glyphicon glyphicon-print"></i>
+                    <a href="{{ route('members.laporan.cetak', ['cawangan' => $cawangan]) }}" target="_blank">
+                         Cetak
                     </a>
                     <br /><br/>
                 </div>

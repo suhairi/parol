@@ -1,4 +1,4 @@
-@extends('layouts.members')
+@extends('layouts.members_cetak')
 
 @section('content')
 
@@ -7,11 +7,10 @@
         @if($jumlah != 0)
 
             <div class="col-xs-12">
-                <div align="right"><i class="glyphicon glyphicon-print"></i> Cetak <br /><br/> </div>
                 <table class="table table-bordered">
                     <thead class="alert alert-info">
                     <tr>
-                        <th colspan="14">Pergerakan Masuk - Alor Setar</th>
+                        <th colspan="14">Pergerakan Masuk - {{ ucwords(strtolower($cawangan)) }}</th>
                     </tr>
                     <tr align="center">
 
