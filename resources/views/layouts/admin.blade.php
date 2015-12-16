@@ -11,7 +11,7 @@
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap-theme.min.css') }}" rel="stylesheet">
 
-    <link href="{{ asset('css/navbar-static-top.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/navbar-static-top_cetak.css') }}" rel="stylesheet">
 
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>

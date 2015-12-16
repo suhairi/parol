@@ -564,7 +564,7 @@ class RecordsController extends Controller
         for ($i = 0; $i <= 7; $i++) {
             $jumlah += (int)$data[$i]['jumlah'];
         }
-        
+
         $dates = explode('-', $tarikh);
         $date = $dates[2] . '-' . $dates[1] . '-' . $dates[0];
 
