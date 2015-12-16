@@ -231,7 +231,11 @@ class RecordsController extends Controller
             'plotShadow' => false,
             'type' => 'pie'
         ];
-        $charts['title'] = ['text' => 'Bilangan Banduan / Tahanan'];
+
+        $dates = explode('-', $tarikh);
+        $date = $dates[2] . '-' . $dates[1] . '-' . $dates[0];
+
+        $charts['title'] = ['text' => 'Bilangan Banduan / Tahanan <br> Tarikh : ' . $date];
         $charts['tooltip'] = ['pointFormat' => '{series.name}: <b>{point.percentage:.1f}%</b>'];
         $charts['credits'] = false;
         $charts['plotOptions'] = [
@@ -283,8 +287,11 @@ class RecordsController extends Controller
             $jumlah += (int)$data[$i]['jumlah'];
         }
 
+        $dates = explode('-', $tarikh);
+        $date = $dates[2] . '-' . $dates[1] . '-' . $dates[0];
+
         $charts['chart'] = ['type' => 'bar'];
-        $charts['title'] = ['text' => 'Bilangan Banduan / Tahanan'];
+        $charts['title'] = ['text' => 'Bilangan Bilangan Banduan <br />bagi Alor Setar, Pokok Sena, Sungai Petani dan Parol <br />Tarikh : ' . $date];
         $charts['xAxis'] = [
             'categories' => ['Alor Setar', 'Pokok Sena', 'Sungai Petani', 'Parol'],
             'title' => ['text' => null]
@@ -305,7 +312,7 @@ class RecordsController extends Controller
             'align' => 'right',
             'verticalAlign' => 'top',
             'x' => -70,
-            'y' => 30,
+            'y' => 40,
             'floating' => true,
             'borderWidth' => 1,
             'backgroundColor' => '#FFFFFF',
@@ -339,10 +346,11 @@ class RecordsController extends Controller
             $jumlah += (int)$data[$i]['jumlah'];
         }
 
-//        dd($data);
+        $dates = explode('-', $tarikh);
+        $date = $dates[2] . '-' . $dates[1] . '-' . $dates[0];
 
         $charts['chart'] = ['type' => 'bar'];
-        $charts['title'] = ['text' => 'Bilangan Banduan / Tahanan'];
+        $charts['title'] = ['text' => 'Bilangan Banduan / Tahanan Alor Setar <br /> Tarikh : ' . $date];
         $charts['xAxis'] = [
             'categories' => ['Melayu', 'Cina', 'India', 'Bukan Warga', 'Lain-lain'],
             'title' => ['text' => null]
@@ -411,10 +419,11 @@ class RecordsController extends Controller
             $jumlah += (int)$data[$i]['jumlah'];
         }
 
-//        dd($data);
+        $dates = explode('-', $tarikh);
+        $date = $dates[2] . '-' . $dates[1] . '-' . $dates[0];
 
         $charts['chart'] = ['type' => 'bar'];
-        $charts['title'] = ['text' => 'Bilangan Banduan / Tahanan'];
+        $charts['title'] = ['text' => 'Bilangan Banduan / Tahanan Pokok Sena <br />Tarikh : ' . $date];
         $charts['xAxis'] = [
             'categories' => ['Melayu', 'Cina', 'India', 'Bukan Warga', 'Lain-lain'],
             'title' => ['text' => null]
@@ -483,10 +492,11 @@ class RecordsController extends Controller
             $jumlah += (int)$data[$i]['jumlah'];
         }
 
-//        dd($data);
+        $dates = explode('-', $tarikh);
+        $date = $dates[2] . '-' . $dates[1] . '-' . $dates[0];
 
         $charts['chart'] = ['type' => 'bar'];
-        $charts['title'] = ['text' => 'Bilangan Banduan / Tahanan'];
+        $charts['title'] = ['text' => 'Bilangan Banduan / Tahanan Sungai Petani <br />Tarikh : ' . $date];
         $charts['xAxis'] = [
             'categories' => ['Melayu', 'Cina', 'India', 'Bukan Warga', 'Lain-lain'],
             'title' => ['text' => null]
@@ -555,10 +565,11 @@ class RecordsController extends Controller
             $jumlah += (int)$data[$i]['jumlah'];
         }
 
-//        dd($data);
+        $dates = explode('-', $tarikh);
+        $date = $dates[2] . '-' . $dates[1] . '-' . $dates[0];
 
         $charts['chart'] = ['type' => 'bar'];
-        $charts['title'] = ['text' => 'Bilangan Banduan / Tahanan'];
+        $charts['title'] = ['text' => 'Bilangan Banduan / Tahanan PAROL <br />Tarikh : ' . $date];
         $charts['xAxis'] = [
             'categories' => ['Melayu', 'Cina', 'India'],
             'title' => ['text' => null]
