@@ -20,8 +20,15 @@ class LaporanController extends Controller
         for($i = 1; $i <= 9; $i++)
         {
 
+
             for ($j = 1; $j <= 12; $j++) {
-                $detail = Keluarmasuk::where('tarikh', 'like', $year . '-' . $j . '-%')
+
+                $month = $j;
+
+                if($month < 10)
+                    $month = '0' . $j;
+
+                $detail = Keluarmasuk::where('tarikh', 'like', $year . '-' . $month . '-%')
                     ->where('cawangan_id', 1)
                     ->where('kesalahan', $i)
                     ->sum('jumlah');
@@ -47,7 +54,13 @@ class LaporanController extends Controller
         {
 
             for ($j = 1; $j <= 12; $j++) {
-                $detail = Keluarmasuk::where('tarikh', 'like', $year . '-' . $j . '-%')
+
+                $month = $j;
+
+                if($month < 10)
+                    $month = '0' . $j;
+
+                $detail = Keluarmasuk::where('tarikh', 'like', $year . '-' . $month . '-%')
                     ->where('cawangan_id', 2)
                     ->where('kesalahan', $i)
                     ->sum('jumlah');
@@ -73,7 +86,13 @@ class LaporanController extends Controller
         {
 
             for ($j = 1; $j <= 12; $j++) {
-                $detail = Keluarmasuk::where('tarikh', 'like', $year . '-' . $j . '-%')
+
+                $month = $j;
+
+                if($month < 10)
+                    $month = '0' . $j;
+                
+                $detail = Keluarmasuk::where('tarikh', 'like', $year . '-' . $month . '-%')
                     ->where('cawangan_id', 3)
                     ->where('kesalahan', $i)
                     ->sum('jumlah');

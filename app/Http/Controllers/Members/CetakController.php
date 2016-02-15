@@ -26,6 +26,8 @@ class CetakController extends Controller
             return Redirect::back();
         }
 
+        return $cawangan;
+
         if ($cawangan_id == 4)
             return Redirect::route('members.rekod.parol.cetak', ['tarikh' => $tarikh]);
 
