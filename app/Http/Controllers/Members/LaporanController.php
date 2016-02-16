@@ -91,7 +91,7 @@ class LaporanController extends Controller
 
                 if($month < 10)
                     $month = '0' . $j;
-                
+
                 $detail = Keluarmasuk::where('tarikh', 'like', $year . '-' . $month . '-%')
                     ->where('cawangan_id', 3)
                     ->where('kesalahan', $i)

@@ -72,7 +72,7 @@
             });
 
             $('#next').click(function() {
-                window.location = "{{ route('admin.index') }}";
+                window.location = "{{ route('admin.ringkasan9') }}";
             });
 
             $('#previous').click(function() {

@@ -14,7 +14,6 @@
 Route::get('/', function () {
     if(Auth::check())
     {
-//        return Auth::user()->name;
         if(Auth::user()->name == 'admin')
             return redirect()->route('admin.index');
         else
@@ -103,8 +102,6 @@ Route::group(['prefix' => 'admin'], function() {
         'as'    => 'admin.ringkasan8',
         'uses'  => 'Admin\RecordsController@ringkasan8'
     ]);
-
-
 
 });
 
@@ -293,9 +290,6 @@ Route::group(['prefix' => 'members', 'middleware' => 'auth'], function() {
             'as'    => 'members.rekod.parol.cetak',
             'uses'  => 'Members\CetakController@parol'
         ]);
-
-
-
 
     });
 

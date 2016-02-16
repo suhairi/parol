@@ -623,6 +623,10 @@ class RecordsController extends Controller
 
     }
 
+    public function ringkasan9() {
+        return View('admin.ringkasan.ringkasan9');
+    }
+
     protected function getData($date)
     {
         $tarikh = $date;
